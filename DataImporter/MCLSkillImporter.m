@@ -124,7 +124,8 @@ static NSRegularExpression *SKILL_REGEX = nil;
 
       // default and specializations
       if ([currentChildName isEqualToString:@"ul"]) {
-        if ([child childCount] == 2) {
+        NSUInteger childCount = [child childCount];
+        if (childCount == 2 || childCount == 3) {
           BOOL canDefault = !NSEqualRanges(NSMakeRange(NSNotFound, 0), [[[child childAtIndex:0] stringValue] rangeOfString:@"Yes" options:NSCaseInsensitiveSearch]);
           currentSkill.canDefault = canDefault;
 
@@ -141,6 +142,14 @@ static NSRegularExpression *SKILL_REGEX = nil;
             [filtered addObject:[unfilteredSpec stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
 
           }
+
+          // special case for climbing
+          if(childCount == 3)
+          {
+            [filtered replaceObjectAtIndex:filtered.count - 1
+                                withObject:[filtered.lastObject stringByAppendingString:[[child childAtIndex:2] stringValue]]];
+          }
+
           currentSkill.specializations = filtered;
 
         }
