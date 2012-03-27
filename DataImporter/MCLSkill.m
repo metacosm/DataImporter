@@ -6,6 +6,7 @@
 
 
 #import "MCLSkill.h"
+#import "MCLSkillCategory.h"
 
 
 @implementation MCLSkill {
@@ -16,12 +17,14 @@
   NSString *_details;
   BOOL _canDefault;
   NSMutableArray *_specializations;
+  __weak MCLSkillCategory *_category;
 }
 @synthesize name = _name;
 @synthesize attribute = _attribute;
 @synthesize details = _details;
 @synthesize canDefault = _canDefault;
 @synthesize specializations = _specializations;
+@synthesize category = _category;
 
 
 - (id)initWithName:(NSString *)name attribute:(NSString *)attribute {
@@ -35,8 +38,13 @@
 
 }
 
+- (void)setCategory:(MCLSkillCategory *)category {
+  _category = category;
+  [category addSkill:self];
+}
+
 - (NSString *)description {
-  return [NSString stringWithFormat:@"Skill named '%@' linked to '%@' with defaulting %s.\nSpecializations: %@\nDetails:\n%@", _name, _attribute, _canDefault ? "Yes" : "No", _specializations.description, _details];
+  return [NSString stringWithFormat:@"Skill named '%@' linked to '%@' with defaulting %s.\nCategory: %@\nSpecializations: %@\nDetails:\n%@", _name, _attribute, _canDefault ? "Yes" : "No", _category.name, _specializations.description, _details];
 }
 
 

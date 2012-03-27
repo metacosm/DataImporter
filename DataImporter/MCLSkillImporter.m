@@ -96,6 +96,8 @@ static NSRegularExpression *SKILL_REGEX = nil;
     // process the skill details
     if (currentSkill) {
 
+      currentSkill.category = currentSubCategory != nil ? currentSubCategory : currentCategory;
+
       // description
       if ([currentChildName isEqualToString:@"p"]) {
         currentSkill.details = childText;
@@ -125,8 +127,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
           }
 
           // special case for climbing
-          if(childCount == 3)
-          {
+          if (childCount == 3) {
             [filtered replaceObjectAtIndex:filtered.count - 1
                                 withObject:[filtered.lastObject stringByAppendingString:[[child childAtIndex:2] stringValue]]];
           }

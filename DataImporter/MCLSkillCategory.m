@@ -6,6 +6,7 @@
 
 
 #import "MCLSkillCategory.h"
+#import "MCLSkill.h"
 
 
 static NSMutableDictionary *categories = nil;
@@ -16,9 +17,13 @@ static NSMutableDictionary *categories = nil;
   NSString *_name;
   __weak MCLSkillCategory *_parent;
   NSMutableDictionary *subCategories;
+  NSMutableDictionary *_skills;
 }
+
 @synthesize name = _name;
 @synthesize parent = _parent;
+@synthesize skills = _skills;
+
 
 + (void)initialize {
   [super initialize];
@@ -34,6 +39,7 @@ static NSMutableDictionary *categories = nil;
   if (self) {
     _name = name;
     subCategories = [NSMutableDictionary dictionaryWithCapacity:7];
+    _skills = [NSMutableDictionary dictionaryWithCapacity:7];
   }
 
   return self;
@@ -52,12 +58,30 @@ static NSMutableDictionary *categories = nil;
 
 }
 
+- (NSString *)description {
+  return [NSString stringWithFormat:@"%@ (parent: %@)\nSkills:\n%@", self.name, self.parent.name, self.skills];
+}
+
+
+- (void)addSkill:(MCLSkill *)skill {
+  if (skill) {
+    [_skills setObject:skill forKey:skill.name];
+  }
+
+}
+
 + (MCLSkillCategory *)forName:(NSString *)name {
   id category = [categories objectForKey:name];
   if (!category) {
     category = [[MCLSkillCategory alloc] initWithName:name];
+    [categories setObject:category forKey:name];
   }
   return category;
+
+}
+
++ (NSDictionary *)categories {
+  return categories;
 
 }
 @end
