@@ -33,24 +33,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSData *const data = [fileManager contentsAtPath:pathOrURL];
 
-  // first get general category
-  /*NSArray *categories = PerformHTMLXPathQuery(data, @"//td[@id='main']");
-  for (NSDictionary *categoryDict in categories) {
-    NSString *category = [categoryDict valueForKey:@"nodeContent"];
-    NSLog(@"Category: %@", category);
-
-    NSArray *subcategories = PerformHTMLXPathQuery(data, @"//h3/following::h4");
-    for (NSDictionary *subcategoryDict in subcategories) {
-      NSLog(@"Subcategory: %@", subcategoryDict);
-    }
-
-  }
-
-
-  return categories;
-*/
   NSXMLDocument *document = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyHTML error:nil];
-//  NSXMLParser *parser= [[NSXMLParser alloc] initWithData:data];
 
   // html / body / table / tr / td
   // for some reason tr is not the first and only child of the table element (maybe text?)
@@ -68,8 +51,6 @@ static NSRegularExpression *SKILL_REGEX = nil;
       continue;
     }
 
-//    NSLog(@"Looking at %@", child.description);
-
     // get the child text
     NSString *childText = [[child stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
@@ -78,7 +59,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
       currentCategory = [MCLSkillCategory forName:childText];
       currentSubCategory = nil;
       currentSkill = nil;
-      NSLog(@"Category '%@'", childText);
+//      NSLog(@"Category '%@'", childText);
 
       continue;
     }
@@ -88,7 +69,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
       currentSubCategory = [MCLSkillCategory forName:childText];
       currentSubCategory.parent = currentCategory;
       currentSkill = nil;
-      NSLog(@"\tSub-category '%@'", childText);
+//      NSLog(@"\tSub-category '%@'", childText);
 
       continue;
     }
@@ -157,7 +138,8 @@ static NSRegularExpression *SKILL_REGEX = nil;
           NSLog(@"Didn't get all the details for skill %@", currentSkill.name);
         }
 
-        NSLog(@"\t\t%@", currentSkill.description);
+//        NSLog(@"\t\t%@", currentSkill);
+
         continue;
       }
     }

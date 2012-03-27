@@ -8,6 +8,7 @@
 
 #import "MCLAppDelegate.h"
 #import "MCLSkillImporter.h"
+#import "MCLSkillCategory.h"
 
 @implementation MCLAppDelegate
 
@@ -17,6 +18,10 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   MCLSkillImporter *skillImporter = [[MCLSkillImporter alloc] init];
   [skillImporter importSkillsFrom:@"/Users/claprun/Downloads/skills.html"];
+  NSDictionary *categories = [MCLSkillCategory categories];
+  for (MCLSkillCategory *category in [categories allValues]) {
+    NSLog(@"%@", category);
+  }
 
 }
 
