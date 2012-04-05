@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class MCLSkill;
+@protocol Named;
 
 
 @interface MCLCategory : NSObject {
@@ -21,7 +21,7 @@
 
 - (void)addSubCategory:(MCLCategory *)category;
 
-- (void)addItem:(id)item;
+- (void)addItem:(id <Named>)item;
 
 + (MCLCategory *)forName:(NSString *)string;
 

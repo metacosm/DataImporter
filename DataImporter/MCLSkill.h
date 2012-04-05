@@ -6,11 +6,12 @@
 
 
 #import <Foundation/Foundation.h>
+#import "Named.h"
 
 @class MCLCategory;
 
 
-@interface MCLSkill : NSObject
+@interface MCLSkill : NSObject <Named>
 
 @property(readonly, copy) NSString *name;
 @property(readonly, copy) NSString *attribute;

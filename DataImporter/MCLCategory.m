@@ -6,6 +6,7 @@
 
 
 #import "MCLCategory.h"
+#import "Named.h"
 
 
 static NSMutableDictionary *categories = nil;
@@ -62,7 +63,7 @@ static NSMutableDictionary *categories = nil;
 }
 
 
-- (void)addItem:(id)item {
+- (void)addItem:(id <Named>)item {
   if (item) {
     [_items setObject:item forKey:item.name];
   }
