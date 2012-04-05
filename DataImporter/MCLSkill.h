@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class MCLSkillCategory;
+@class MCLCategory;
 
 
 @interface MCLSkill : NSObject
@@ -15,7 +15,7 @@
 @property(readonly, copy) NSString *name;
 @property(readonly, copy) NSString *attribute;
 @property(readwrite, copy) NSString *details;
-@property(readwrite, weak) MCLSkillCategory *category;
+@property(readwrite, weak) MCLCategory *category;
 
 @property(nonatomic, assign) BOOL canDefault;
 

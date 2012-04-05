@@ -6,7 +6,7 @@
 
 
 #import "MCLSkill.h"
-#import "MCLSkillCategory.h"
+#import "MCLCategory.h"
 
 
 @implementation MCLSkill {
@@ -17,7 +17,7 @@
   NSString *_details;
   BOOL _canDefault;
   NSMutableArray *_specializations;
-  __weak MCLSkillCategory *_category;
+  __weak MCLCategory *_category;
 }
 @synthesize name = _name;
 @synthesize attribute = _attribute;
@@ -38,7 +38,7 @@
 
 }
 
-- (void)setCategory:(MCLSkillCategory *)category {
+- (void)setCategory:(MCLCategory *)category {
   _category = category;
   [category addItem:self];
 }

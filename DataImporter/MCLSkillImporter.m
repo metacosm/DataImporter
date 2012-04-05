@@ -6,7 +6,7 @@
 
 
 #import "MCLSkillImporter.h"
-#import "MCLSkillCategory.h"
+#import "MCLCategory.h"
 #import "MCLSkill.h"
 
 static NSRegularExpression *SKILL_REGEX = nil;
@@ -39,8 +39,8 @@ static NSRegularExpression *SKILL_REGEX = nil;
   // for some reason tr is not the first and only child of the table element (maybe text?)
   NSXMLNode *const content = [[[[[document rootElement] childAtIndex:1] childAtIndex:0] childAtIndex:1] childAtIndex:0];
   NSArray *children = [content children];
-  MCLSkillCategory *currentCategory = nil;
-  MCLSkillCategory *currentSubCategory = nil;
+  MCLCategory *currentCategory = nil;
+  MCLCategory *currentSubCategory = nil;
   MCLSkill *currentSkill = nil;
 
   for (NSXMLElement *child in children) {
@@ -56,7 +56,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
 
     // we found a category
     if ([currentChildName isEqualToString:@"h3"]) {
-      currentCategory = [MCLSkillCategory forName:childText];
+      currentCategory = [MCLCategory forName:childText];
       currentSubCategory = nil;
       currentSkill = nil;
 //      NSLog(@"Category '%@'", childText);
@@ -66,7 +66,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
 
     // we found a subcategory
     if (currentCategory && [currentChildName isEqualToString:@"h4"]) {
-      currentSubCategory = [MCLSkillCategory forName:childText];
+      currentSubCategory = [MCLCategory forName:childText];
       currentSubCategory.parent = currentCategory;
       currentSkill = nil;
 //      NSLog(@"\tSub-category '%@'", childText);

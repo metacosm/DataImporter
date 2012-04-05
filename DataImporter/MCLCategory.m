@@ -5,16 +5,16 @@
 //
 
 
-#import "MCLSkillCategory.h"
+#import "MCLCategory.h"
 
 
 static NSMutableDictionary *categories = nil;
 
-@implementation MCLSkillCategory {
+@implementation MCLCategory {
 
 @private
   NSString *_name;
-  __weak MCLSkillCategory *_parent;
+  __weak MCLCategory *_parent;
   NSMutableDictionary *subCategories;
   NSMutableDictionary *_items;
 }
@@ -46,13 +46,13 @@ static NSMutableDictionary *categories = nil;
 }
 
 
-- (void)setParent:(MCLSkillCategory *)category {
+- (void)setParent:(MCLCategory *)category {
   _parent = category;
   [_parent addSubCategory:self];
 
 }
 
-- (void)addSubCategory:(MCLSkillCategory *)category {
+- (void)addSubCategory:(MCLCategory *)category {
   [subCategories setObject:category forKey:category.name];
 
 }
@@ -69,10 +69,10 @@ static NSMutableDictionary *categories = nil;
 
 }
 
-+ (MCLSkillCategory *)forName:(NSString *)name {
++ (MCLCategory *)forName:(NSString *)name {
   id category = [categories objectForKey:name];
   if (!category) {
-    category = [[MCLSkillCategory alloc] initWithName:name];
+    category = [[MCLCategory alloc] initWithName:name];
     [categories setObject:category forKey:name];
   }
   return category;

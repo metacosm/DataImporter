@@ -10,20 +10,20 @@
 @class MCLSkill;
 
 
-@interface MCLSkillCategory : NSObject {
+@interface MCLCategory : NSObject {
 }
 
 @property(readonly, copy) NSString *name;
-@property(readwrite, weak, nonatomic) MCLSkillCategory *parent;
+@property(readwrite, weak, nonatomic) MCLCategory *parent;
 @property(readonly, strong) NSDictionary *items;
 
 - (id)initWithName:(NSString *)name;
 
-- (void)addSubCategory:(MCLSkillCategory *)category;
+- (void)addSubCategory:(MCLCategory *)category;
 
 - (void)addItem:(id)item;
 
-+ (MCLSkillCategory *)forName:(NSString *)string;
++ (MCLCategory *)forName:(NSString *)string;
 
 + (NSDictionary *)categories;
 @end
