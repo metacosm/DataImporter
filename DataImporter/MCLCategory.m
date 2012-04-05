@@ -18,11 +18,13 @@ static NSMutableDictionary *categories = nil;
   __weak MCLCategory *_parent;
   NSMutableDictionary *subCategories;
   NSMutableDictionary *_items;
+  NSString *_details;
 }
 
 @synthesize name = _name;
 @synthesize parent = _parent;
 @synthesize items = _items;
+@synthesize details = _details;
 
 
 + (void)initialize {

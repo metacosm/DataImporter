@@ -16,6 +16,7 @@
 @property(readonly, copy) NSString *name;
 @property(readwrite, weak, nonatomic) MCLCategory *parent;
 @property(readonly, strong) NSDictionary *items;
+@property(readwrite, copy, nonatomic) NSString *details;
 
 - (id)initWithName:(NSString *)name;
 
