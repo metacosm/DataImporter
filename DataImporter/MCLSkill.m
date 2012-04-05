@@ -40,7 +40,7 @@
 
 - (void)setCategory:(MCLSkillCategory *)category {
   _category = category;
-  [category addSkill:self];
+  [category addItem:self];
 }
 
 - (NSString *)description {

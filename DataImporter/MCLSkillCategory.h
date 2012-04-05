@@ -15,13 +15,13 @@
 
 @property(readonly, copy) NSString *name;
 @property(readwrite, weak, nonatomic) MCLSkillCategory *parent;
-@property(readonly, strong) NSDictionary *skills;
+@property(readonly, strong) NSDictionary *items;
 
 - (id)initWithName:(NSString *)name;
 
 - (void)addSubCategory:(MCLSkillCategory *)category;
 
-- (void)addSkill:(MCLSkill *)skill;
+- (void)addItem:(id)item;
 
 + (MCLSkillCategory *)forName:(NSString *)string;
 
