@@ -26,5 +26,7 @@
 
 + (MCLCategory *)forName:(NSString *)string;
 
-+ (NSDictionary *)categories;
++ (MCLCategory *)forName:(NSString *)name atTopLevel:(BOOL)isTop;
+
++ (NSDictionary *)categories:(BOOL)topLevelOnly;
 @end

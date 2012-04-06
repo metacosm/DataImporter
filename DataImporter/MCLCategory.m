@@ -10,6 +10,7 @@
 
 
 static NSMutableDictionary *categories = nil;
+static NSMutableDictionary *topLevelCategories = nil;
 
 @implementation MCLCategory {
 
@@ -31,7 +32,8 @@ static NSMutableDictionary *categories = nil;
   [super initialize];
 
   if (!categories) {
-    categories = [NSMutableDictionary dictionaryWithCapacity:7];
+    categories = [NSMutableDictionary dictionaryWithCapacity:101];
+    topLevelCategories = [NSMutableDictionary dictionaryWithCapacity:7];
   }
 }
 
@@ -61,7 +63,30 @@ static NSMutableDictionary *categories = nil;
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"%@ (parent: %@)\nSkills:\n%@", self.name, self.parent.name, self.items];
+  return [self descriptionWithIndent:@"\t"];
+}
+
+- (NSString *)descriptionWithIndent:(NSString *)indent {
+  NSMutableString *description = [NSMutableString stringWithCapacity:1024];
+  [description appendString:self.name];
+
+  if (subCategories.count > 0) {
+    for (id key in [[subCategories allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
+      [description appendFormat:@"\n%@+ %@", indent, [[subCategories valueForKey:key] descriptionWithIndent:[indent stringByAppendingString:@"\t"]]];
+    }
+  }
+
+  if (self.items.count > 0) {
+    for (id item in self.items.allValues) {
+      [description appendFormat:@"\n%@- %@", indent, item];
+    }
+  }
+
+  if (self.details) {
+    [description appendFormat:@"\n%@Details:\n%@%@", indent, indent, self.details];
+  }
+
+  return description;
 }
 
 
@@ -73,17 +98,29 @@ static NSMutableDictionary *categories = nil;
 }
 
 + (MCLCategory *)forName:(NSString *)name {
-  id category = [categories objectForKey:name];
+  return [self forName:name atTopLevel:NO];
+
+}
+
++ (MCLCategory *)forName:(NSString *)name atTopLevel:(BOOL)isTop {
+  NSDictionary *lookupSpot = isTop ? topLevelCategories : categories;
+
+  id category = [lookupSpot objectForKey:name];
   if (!category) {
     category = [[MCLCategory alloc] initWithName:name];
     [categories setObject:category forKey:name];
+
+    if (isTop) {
+      [topLevelCategories setObject:category forKey:name];
+    }
+
   }
   return category;
 
 }
 
-+ (NSDictionary *)categories {
-  return categories;
++ (NSDictionary *)categories:(BOOL)topLevelOnly {
+  return topLevelOnly ? topLevelCategories : categories;
 
 }
 @end
