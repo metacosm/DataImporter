@@ -53,10 +53,11 @@ static NSRegularExpression *SKILL_REGEX = nil;
 
     // get the child text
     NSString *childText = [[child stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    // NSLog(@"Looking at %@", childText);
 
     // we found a category
     if ([currentChildName isEqualToString:@"h3"]) {
-      currentCategory = [MCLCategory forName:childText];
+      currentCategory = [MCLCategory forName:childText atTopLevel:YES];
       currentSubCategory = nil;
       currentSkill = nil;
 //      NSLog(@"Category '%@'", childText);
