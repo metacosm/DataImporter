@@ -18,9 +18,15 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   MCLSkillImporter *skillImporter = [[MCLSkillImporter alloc] init];
   [skillImporter importSkillsFrom:@"/Users/claprun/Downloads/skills.html"];
-  NSDictionary *categories = [MCLCategory categories];
-  for (MCLCategory *category in [categories allValues]) {
-    NSLog(@"%@", category);
+
+//  MCLSpellImporter *spellImporter = [[MCLSpellImporter alloc] init];
+//  [spellImporter importFrom:@"/Users/claprun/Downloads/spells.html"];
+
+  NSDictionary *categories = [MCLCategory categories:YES];
+  NSArray *const sortedKeys = [[categories allKeys] sortedArrayUsingSelector:@selector(compare:)];
+
+  for (NSString *key in sortedKeys) {
+    NSLog(@"\n%@\n", [categories valueForKey:key]);
   }
 
 }
