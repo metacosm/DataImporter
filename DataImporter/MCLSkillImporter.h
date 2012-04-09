@@ -9,5 +9,5 @@
 
 @interface MCLSkillImporter : NSObject
 
-- (NSArray *)importSkillsFrom:(NSString *)pathOrURL;
+- (NSArray *)importFrom:(NSString *)pathOrURL;
 @end

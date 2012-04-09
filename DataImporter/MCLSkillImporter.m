@@ -29,7 +29,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
 }
 
 
-- (NSArray *)importSkillsFrom:(NSString *)pathOrURL {
+- (NSArray *)importFrom:(NSString *)pathOrURL {
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSData *const data = [fileManager contentsAtPath:pathOrURL];
 
