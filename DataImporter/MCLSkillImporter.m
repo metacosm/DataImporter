@@ -99,7 +99,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
 
       currentSkill.category = currentSubCategory != nil ? currentSubCategory : currentCategory;
 
-      // description
+      // details
       if ([currentChildName isEqualToString:@"p"]) {
         currentSkill.details = childText;
 
@@ -140,7 +140,11 @@ static NSRegularExpression *SKILL_REGEX = nil;
           NSLog(@"Didn't get all the details for skill %@", currentSkill.name);
         }
 
-//        NSLog(@"\t\t%@", currentSkill);
+        // NSLog(@"\t\t%@", currentSkill);
+
+        // if we arrive here, we're done with the current skill
+        currentSkill = nil;
+
 
         continue;
       }

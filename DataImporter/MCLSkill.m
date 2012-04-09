@@ -43,6 +43,13 @@
   [category addItem:self];
 }
 
+- (void)setDetails:(NSString *)details {
+  if (!details || details.length == 0) {
+    NSLog(@"!!!!!!!! Missing details for skill %@", _name);
+  }
+  _details = [NSString stringWithString:details];
+}
+
 - (NSString *)description {
   return [NSString stringWithFormat:@"Skill named '%@' linked to '%@' with defaulting %s.\nCategory: %@\nSpecializations: %@\nDetails:\n%@", _name, _attribute, _canDefault ? "Yes" : "No", _category.name, _specializations.description, _details];
 }
