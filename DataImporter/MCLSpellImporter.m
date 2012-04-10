@@ -186,8 +186,17 @@ static NSRegularExpression *SPELL_REGEX = nil;
     }
 
     // process the subcategory details
-    if (currentSubCategory && [currentChildName isEqualToString:@"p"]) {
+    if (currentSubCategory && ([currentChildName isEqualToString:@"p"])) {
       currentSubCategory.details = currentSubCategory.details ? [currentSubCategory.details stringByAppendingString:[@"\n" stringByAppendingString:childText]] : childText;
+
+      continue;
+    }
+
+    // deal with the Increase Reflexes special case
+    if (currentSubCategory && [currentChildName isEqualToString:@"ul"]) {
+      for (id li in [child children]) {
+        currentSubCategory.details = [currentSubCategory.details stringByAppendingString:[@"\n- " stringByAppendingString:[[li stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]]];
+      }
 
       continue;
     }
