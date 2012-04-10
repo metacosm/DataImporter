@@ -186,8 +186,8 @@ static NSRegularExpression *SPELL_REGEX = nil;
     }
 
     // process the subcategory details
-    if (currentSubCategory && !currentSubCategory.details && [currentChildName isEqualToString:@"p"]) {
-      currentSubCategory.details = childText;
+    if (currentSubCategory && [currentChildName isEqualToString:@"p"]) {
+      currentSubCategory.details = currentSubCategory.details ? [currentSubCategory.details stringByAppendingString:[@"\n" stringByAppendingString:childText]] : childText;
 
       continue;
     }
