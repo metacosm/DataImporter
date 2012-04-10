@@ -7,6 +7,7 @@
 
 #import "MCLSpell.h"
 #import "MCLCategory.h"
+#import "MCLDetectionSpell.h"
 
 
 @implementation MCLSpell {
@@ -35,10 +36,11 @@
 @synthesize damage = _damage;
 
 
-- (id)initWithName:(NSString *)name {
+- (id)initWithName:(NSString *)name inCategory:(MCLCategory *)category {
   self = [super init];
   if (self) {
     _name = name;
+    _category = category;
   }
 
   return self;
@@ -55,8 +57,15 @@
   [category addItem:self];
 }
 
-+ (MCLSpell *)spellNamed:(NSString *)name {
-  return [[MCLSpell alloc] initWithName:name];
++ (MCLSpell *)spellNamed:(NSString *)name inCategory:(MCLCategory *)category {
+
+  MCLSpell *spell;
+  if ([category.name hasPrefix:@"Detection"]) {
+    spell = [MCLDetectionSpell alloc];
+  } else {
+    spell = [MCLSpell alloc];
+  }
+  return [spell initWithName:name inCategory:category];
 
 }
 @end

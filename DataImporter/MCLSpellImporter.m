@@ -8,6 +8,7 @@
 #import "MCLSpellImporter.h"
 #import "MCLCategory.h"
 #import "MCLSpell.h"
+#import "MCLDetectionSpell.h"
 
 
 static NSRegularExpression *SPELL_REGEX = nil;
@@ -104,8 +105,31 @@ static NSRegularExpression *SPELL_REGEX = nil;
           spellName = [spellName substringFromIndex:location];
         }
 
-        currentSpell = [MCLSpell spellNamed:spellName];
-        currentSpell.category = currentSubCategory != nil ? currentSubCategory : currentCategory;
+        currentSpell = [MCLSpell spellNamed:spellName inCategory:currentSubCategory != nil ? currentSubCategory : currentCategory];
+
+        // details from spell name
+        NSString *const spellDetails = [childText substringWithRange:[match rangeAtIndex:2]];
+        if ([spellDetails rangeOfString:@"Elemental"].location != NSNotFound) {
+          currentSpell.usingElementalEffects = YES;
+        }
+        currentSpell.direct = [spellDetails rangeOfString:@"Direct"].location != NSNotFound;
+
+        // only for detection spells
+        if ([currentSpell isMemberOfClass:[MCLDetectionSpell class]]) {
+          MCLDetectionSpell *detectionSpell = (MCLDetectionSpell *) currentSpell;
+
+          // fix for cryptesthesia
+          if ([currentSpell.name rangeOfString:@"Cryptesthesia"].location != NSNotFound) {
+            detectionSpell.active = NO;
+            detectionSpell.mode = @"Directional";
+          } else {
+            detectionSpell.active = [spellDetails rangeOfString:@"Active"].location != NSNotFound;
+            const NSUInteger start = [spellDetails rangeOfString:@","].location + 1;
+            const NSUInteger end = [spellDetails length] - start - 1;
+            detectionSpell.mode = [spellDetails substringWithRange:NSMakeRange(start, end)];
+          }
+
+        }
       }
       else {
         NSLog(@"'%@' didn't match spell regex", childText);
@@ -158,7 +182,7 @@ static NSRegularExpression *SPELL_REGEX = nil;
 
       }
 
-      NSLog(@"%@", currentSpell);
+      // NSLog(@"%@", currentSpell);
     }
 
     // process the subcategory details

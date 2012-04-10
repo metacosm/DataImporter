@@ -26,7 +26,7 @@
 @property(nonatomic, weak) MCLCategory *category;
 
 
-- (MCLSpell *)initWithName:(NSString *)string;
+- (id)initWithName:(NSString *)name inCategory:(MCLCategory *)category;
 
-+ (MCLSpell *)spellNamed:(NSString *)string;
++ (MCLSpell *)spellNamed:(NSString *)name inCategory:(MCLCategory *)category;
 @end

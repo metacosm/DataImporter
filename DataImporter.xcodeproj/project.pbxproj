@@ -22,6 +22,7 @@
 		6759C98F9B45448DE4CFF18B /* MCLSkill.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF18A /* MCLSkill.m */; };
 		6759C98F9B45448DE4CFF18E /* MCLSpellImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF18D /* MCLSpellImporter.m */; };
 		6759C98F9B45448DE4CFF191 /* MCLSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF190 /* MCLSpell.m */; };
+		6759C98F9B45448DE4CFF195 /* MCLDetectionSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		6759C98F9B45448DE4CFF190 /* MCLSpell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLSpell.m; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF192 /* MCLSpell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLSpell.h; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF193 /* Named.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Named.h; sourceTree = "<group>"; };
+		6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLDetectionSpell.m; sourceTree = "<group>"; };
+		6759C98F9B45448DE4CFF196 /* MCLDetectionSpell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLDetectionSpell.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 		6759C98F9B45448DE4CFF153 /* DataImporter */ = {
 			isa = PBXGroup;
 			children = (
+				6759C98F9B45448DE4CFF196 /* MCLDetectionSpell.h */,
+				6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */,
 				6759C98F9B45448DE4CFF193 /* Named.h */,
 				6759C98F9B45448DE4CFF192 /* MCLSpell.h */,
 				6759C98F9B45448DE4CFF190 /* MCLSpell.m */,
@@ -291,6 +296,7 @@
 				6759C98F9B45448DE4CFF18B /* MCLSkill.m in Sources */,
 				6759C98F9B45448DE4CFF18E /* MCLSpellImporter.m in Sources */,
 				6759C98F9B45448DE4CFF191 /* MCLSpell.m in Sources */,
+				6759C98F9B45448DE4CFF195 /* MCLDetectionSpell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
