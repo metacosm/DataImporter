@@ -40,7 +40,7 @@
   self = [super init];
   if (self) {
     _name = name;
-    _category = category;
+    self.category = category;
   }
 
   return self;
