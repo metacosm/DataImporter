@@ -17,6 +17,7 @@
   NSString *_range;
   NSString *_duration;
   NSString *_drain;
+  NSString *_damage;
   BOOL _direct;
   BOOL _area;
   BOOL _usingElementalEffects;
@@ -31,6 +32,8 @@
 @synthesize area = _area;
 @synthesize usingElementalEffects = _usingElementalEffects;
 @synthesize category = _category;
+@synthesize damage = _damage;
+
 
 - (id)initWithName:(NSString *)name {
   self = [super init];
@@ -43,7 +46,7 @@
 }
 
 - (NSString *)description {
-  return self.name;
+  return [NSString stringWithFormat:@"Spell '%@' Type: '%@' Range: '%@' Damage: '%@' Duration: '%@' Drain: '%@'", self.name, self.type, self.range, self.damage, self.duration, self.drain];
 }
 
 

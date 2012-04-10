@@ -12,17 +12,19 @@
 
 
 @interface MCLSpell : NSObject <Named>
-@property(readonly, copy) NSString *name;
-@property(readonly, copy) NSString *type;
-@property(readonly, copy) NSString *range;
-@property(readonly, copy) NSString *duration;
-@property(readonly, copy) NSString *drain;
-@property(readonly) BOOL direct;
-@property(readonly) BOOL area;
-@property(readonly) BOOL usingElementalEffects;
+@property(nonatomic, readwrite, copy) NSString *name;
+@property(nonatomic, readwrite, copy) NSString *type;
+@property(nonatomic, readwrite, copy) NSString *range;
+@property(nonatomic, readwrite, copy) NSString *duration;
+@property(nonatomic, readwrite, copy) NSString *drain;
+@property(nonatomic, readwrite, copy) NSString *damage;
+@property(nonatomic, readwrite) BOOL direct;
+@property(nonatomic, readwrite) BOOL area;
+@property(nonatomic, readwrite) BOOL usingElementalEffects;
 
 
 @property(nonatomic, weak) MCLCategory *category;
+
 
 - (MCLSpell *)initWithName:(NSString *)string;
 

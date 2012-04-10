@@ -38,27 +38,12 @@ static NSRegularExpression *SPELL_REGEX = nil;
 }
 
 - (NSArray *)importFrom:(NSString *)pathOrURL {
-  NSData *data;
-  if ([pathOrURL hasPrefix:@"http"]) {
-    // Create the request.
-    NSURLRequest *theRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@""]
-                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval:60.0];
-// create the connection with the request
-// and start loading the data
-    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    if (theConnection) {
-      // Create the NSMutableData to hold the received data.
-      // receivedData is an instance variable declared elsewhere.
-      data = [NSMutableData data];
-    } else {
-      // Inform the user that the connection failed.
-    }
-
-  } else {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    data = [fileManager contentsAtPath:pathOrURL];
-  }
+  // Replace entities before processing
+  NSString *stringContent = [NSString stringWithContentsOfFile:pathOrURL encoding:NSUTF8StringEncoding error:nil];
+  stringContent = [stringContent stringByReplacingOccurrencesOfString:@"&divide;" withString:@"/"];
+  stringContent = [stringContent stringByReplacingOccurrencesOfString:@"&#8211;" withString:@"-"];
+  stringContent = [stringContent stringByReplacingOccurrencesOfString:@"&#8226;" withString:@""];
+  NSData *data = [stringContent dataUsingEncoding:NSUTF8StringEncoding];
 
 
   NSXMLDocument *document = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyHTML error:nil];
@@ -112,16 +97,68 @@ static NSRegularExpression *SPELL_REGEX = nil;
 
       if (match) {
         NSString *spellName = [[childText substringWithRange:[match rangeAtIndex:1]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+        // fix for improper formating for [Sense] Removal
+        const NSUInteger location = [spellName rangeOfString:@"[Sense] Removal"].location;
+        if (location != NSNotFound && ![spellName hasPrefix:@"Mass"]) {
+          spellName = [spellName substringFromIndex:location];
+        }
+
         currentSpell = [MCLSpell spellNamed:spellName];
         currentSpell.category = currentSubCategory != nil ? currentSubCategory : currentCategory;
-
-//        NSLog(@"\t\tSpell: '%@'", spellName);
       }
       else {
         NSLog(@"'%@' didn't match spell regex", childText);
       }
 
       continue;
+    }
+
+    // process the spell details
+    if (currentSpell && [currentChildName isEqualToString:@"h6"]) {
+      NSString *TYPE = @"Type: ";
+      NSString *RANGE = @"Range: ";
+      NSString *DAMAGE = @"Damage: ";
+      NSString *DURATION = @"Duration: ";
+      NSString *DV = @"DV: ";
+      NSString *type;
+      NSString *range;
+      NSString *damage;
+      NSString *duration;
+
+      NSScanner *scanner = [NSScanner scannerWithString:childText];
+      while (!scanner.isAtEnd) {
+        if ([scanner scanString:TYPE intoString:NULL] &&
+            [scanner scanUpToString:@"R" intoString:&type] &&
+            [scanner scanString:RANGE intoString:NULL] &&
+            [scanner scanUpToString:@"D" intoString:&range]) {
+
+          if ([scanner scanString:DAMAGE intoString:NULL] && [scanner scanUpToString:@"D" intoString:&damage]) {
+            currentSpell.damage = [damage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+          }
+
+          if ([scanner scanString:DURATION intoString:NULL] &&
+              [scanner scanUpToString:@"D" intoString:&duration] &&
+              [scanner scanString:DV intoString:NULL]) {
+
+            currentSpell.type = [type stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+            currentSpell.range = [range stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            currentSpell.area = [currentSpell.range rangeOfString:@"(A)"].location != NSNotFound;
+
+
+            currentSpell.duration = [duration stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+            currentSpell.drain = [[childText substringFromIndex:[scanner scanLocation]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+            [scanner setScanLocation:childText.length];
+          }
+        }
+
+      }
+
+      NSLog(@"%@", currentSpell);
     }
 
     // process the subcategory details
