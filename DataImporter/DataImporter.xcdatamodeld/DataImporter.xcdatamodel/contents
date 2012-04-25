@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="info.metacosm.DataImporter" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AttributeDAO" representedClassName="AttributeDAO" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -29,10 +29,10 @@
         <attribute name="usingElementalEffects" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SkillDAO" positionX="-2601" positionY="1251" width="128" height="120"/>
-        <element name="SpellDAO" positionX="-2403" positionY="1152" width="128" height="165"/>
+        <element name="AttributeDAO" positionX="-2808" positionY="1152" width="128" height="60"/>
         <element name="CategoryDAO" positionX="-2810" positionY="1005" width="128" height="75"/>
         <element name="NamedDAO" positionX="-2477" positionY="960" width="128" height="75"/>
-        <element name="AttributeDAO" positionX="-2808" positionY="1152" width="128" height="60"/>
+        <element name="SkillDAO" positionX="-2601" positionY="1251" width="128" height="120"/>
+        <element name="SpellDAO" positionX="-2403" positionY="1152" width="128" height="165"/>
     </elements>
 </model>

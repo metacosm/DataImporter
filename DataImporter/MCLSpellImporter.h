@@ -6,8 +6,8 @@
 
 
 #import <Foundation/Foundation.h>
+#import "MCLImporter.h"
 
 
-@interface MCLSpellImporter : NSObject
-- (NSArray *)importFrom:(NSString *)pathOrURL;
+@interface MCLSpellImporter : MCLImporter
 @end

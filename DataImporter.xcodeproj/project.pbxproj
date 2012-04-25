@@ -23,12 +23,13 @@
 		6759C98F9B45448DE4CFF18E /* MCLSpellImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF18D /* MCLSpellImporter.m */; };
 		6759C98F9B45448DE4CFF191 /* MCLSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF190 /* MCLSpell.m */; };
 		6759C98F9B45448DE4CFF195 /* MCLDetectionSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */; };
-		9EEA53F3153A08F90073BAA4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53F1153A08F90073BAA4 /* Model.xcdatamodeld */; };
+		9EEA53F3153A08F90073BAA4 /* DataImporter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53F1153A08F90073BAA4 /* DataImporter.xcdatamodeld */; };
 		9EEA53F7153A18310073BAA4 /* SkillDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53F6153A18310073BAA4 /* SkillDAO.m */; };
 		9EEA53FA153A18310073BAA4 /* SpellDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53F9153A18310073BAA4 /* SpellDAO.m */; };
 		9EEA53FD153A18310073BAA4 /* CategoryDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53FC153A18310073BAA4 /* CategoryDAO.m */; };
 		9EEA5400153A18310073BAA4 /* NamedDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53FF153A18310073BAA4 /* NamedDAO.m */; };
 		9EEA5403153A18310073BAA4 /* AttributeDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5402153A18310073BAA4 /* AttributeDAO.m */; };
+		9EEA5404153A18810073BAA6 /* MCLImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAA5 /* MCLImporter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +75,7 @@
 		6759C98F9B45448DE4CFF193 /* Named.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Named.h; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLDetectionSpell.m; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF196 /* MCLDetectionSpell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLDetectionSpell.h; sourceTree = "<group>"; };
-		9EEA53F2153A08F90073BAA4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9EEA53F2153A08F90073BAA4 /* DataImporter.xcdatamodel */ = {isa = PBXFileReference; path = DataImporter.xcdatamodel; sourceTree = "<group>"; };
 		9EEA53F5153A18300073BAA4 /* SkillDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkillDAO.h; path = persistence/SkillDAO.h; sourceTree = "<group>"; };
 		9EEA53F6153A18310073BAA4 /* SkillDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkillDAO.m; path = persistence/SkillDAO.m; sourceTree = "<group>"; };
 		9EEA53F8153A18310073BAA4 /* SpellDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpellDAO.h; path = persistence/SpellDAO.h; sourceTree = "<group>"; };
@@ -85,6 +86,8 @@
 		9EEA53FF153A18310073BAA4 /* NamedDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NamedDAO.m; path = persistence/NamedDAO.m; sourceTree = "<group>"; };
 		9EEA5401153A18310073BAA4 /* AttributeDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributeDAO.h; path = persistence/AttributeDAO.h; sourceTree = "<group>"; };
 		9EEA5402153A18310073BAA4 /* AttributeDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributeDAO.m; path = persistence/AttributeDAO.m; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAA5 /* MCLImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLImporter.m; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAA7 /* MCLImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLImporter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,8 @@
 		6759C98F9B45448DE4CFF153 /* DataImporter */ = {
 			isa = PBXGroup;
 			children = (
+				9EEA5404153A18810073BAA7 /* MCLImporter.h */,
+				9EEA5404153A18810073BAA5 /* MCLImporter.m */,
 				9EEA5404153A18810073BAA4 /* persistence */,
 				6759C98F9B45448DE4CFF196 /* MCLDetectionSpell.h */,
 				6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */,
@@ -206,7 +211,7 @@
 		9EEA5404153A18810073BAA4 /* persistence */ = {
 			isa = PBXGroup;
 			children = (
-				9EEA53F1153A08F90073BAA4 /* Model.xcdatamodeld */,
+				9EEA53F1153A08F90073BAA4 /* DataImporter.xcdatamodeld */,
 				9EEA5401153A18310073BAA4 /* AttributeDAO.h */,
 				9EEA5402153A18310073BAA4 /* AttributeDAO.m */,
 				9EEA53FE153A18310073BAA4 /* NamedDAO.h */,
@@ -333,12 +338,13 @@
 				6759C98F9B45448DE4CFF18E /* MCLSpellImporter.m in Sources */,
 				6759C98F9B45448DE4CFF191 /* MCLSpell.m in Sources */,
 				6759C98F9B45448DE4CFF195 /* MCLDetectionSpell.m in Sources */,
-				9EEA53F3153A08F90073BAA4 /* Model.xcdatamodeld in Sources */,
+				9EEA53F3153A08F90073BAA4 /* DataImporter.xcdatamodeld in Sources */,
 				9EEA53F7153A18310073BAA4 /* SkillDAO.m in Sources */,
 				9EEA53FA153A18310073BAA4 /* SpellDAO.m in Sources */,
 				9EEA53FD153A18310073BAA4 /* CategoryDAO.m in Sources */,
 				9EEA5400153A18310073BAA4 /* NamedDAO.m in Sources */,
 				9EEA5403153A18310073BAA4 /* AttributeDAO.m in Sources */,
+				9EEA5404153A18810073BAA6 /* MCLImporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,13 +548,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9EEA53F1153A08F90073BAA4 /* Model.xcdatamodeld */ = {
+		9EEA53F1153A08F90073BAA4 /* DataImporter.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9EEA53F2153A08F90073BAA4 /* Model.xcdatamodel */,
+				9EEA53F2153A08F90073BAA4 /* DataImporter.xcdatamodel */,
 			);
-			currentVersion = 9EEA53F2153A08F90073BAA4 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = 9EEA53F2153A08F90073BAA4 /* DataImporter.xcdatamodel */;
+			path = DataImporter.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

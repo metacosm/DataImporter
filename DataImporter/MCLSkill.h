@@ -15,8 +15,8 @@
 
 @property(readonly, copy) NSString *name;
 @property(readonly, copy) NSString *attribute;
-@property(readwrite, copy) NSString *details;
-@property(readwrite, weak) MCLCategory *category;
+@property(readwrite, copy, nonatomic) NSString *details;
+@property(readwrite, weak, nonatomic) MCLCategory *category;
 
 @property(nonatomic, assign) BOOL canDefault;
 
