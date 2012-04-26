@@ -7,6 +7,8 @@
 
 #import "MCLImporter.h"
 #import "MCLCategory.h"
+#import "MCLSkillImporter.h"
+#import "MCLSpellImporter.h"
 
 
 @implementation MCLImporter {
@@ -16,7 +18,25 @@
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize type = _type;
 
+
+- (NSString *)version {
+  return SR4;
+}
+
++ (void)import:(ImporterType)type from:(NSString *)pathOrURL withVersion:(NSString *)dataVersion {
+  if (SKILLS == type) {
+    [[[MCLSkillImporter alloc] init] importFrom:pathOrURL];
+  }
+  else if (SPELLS == type) {
+    [[[MCLSpellImporter alloc] init] importFrom:pathOrURL];
+  }
+  else {
+    [[NSApplication sharedApplication] presentError:[NSError errorWithDomain:@"info.metacosm.DataImporter" code:-1 userInfo:nil]];
+  }
+
+}
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "info.metacosm.DataImporter" in the user's Downloads directory.
 - (NSURL *)applicationFilesDirectory {
@@ -33,6 +53,10 @@
 
   __managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
   return __managedObjectModel;
+}
+
+- (NSString *)dataFileName {
+  return [[[self.typeAsString stringByAppendingString:@"-"] stringByAppendingString:self.version] stringByAppendingPathExtension:@"srad"];
 }
 
 // Returns the persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.)
@@ -76,7 +100,7 @@
     }
   }
 
-  NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"DataImporter.storedata"];
+  NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:[self dataFileName]];
   NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
   if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
     [[NSApplication sharedApplication] presentError:error];
@@ -114,7 +138,7 @@
 }
 
 // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
-- (IBAction)saveAction:(id)sender {
+- (void)saveAction:(id)sender {
   NSError *error = nil;
 
   if (![[self managedObjectContext] commitEditing]) {
@@ -124,51 +148,6 @@
   if (![[self managedObjectContext] save:&error]) {
     [[NSApplication sharedApplication] presentError:error];
   }
-}
-
-- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
-  // Save changes in the application's managed object context before the application terminates.
-
-  if (!__managedObjectContext) {
-    return NSTerminateNow;
-  }
-
-  if (![[self managedObjectContext] commitEditing]) {
-    NSLog(@"%@:%@ unable to commit editing to terminate", [self class], NSStringFromSelector(_cmd));
-    return NSTerminateCancel;
-  }
-
-  if (![[self managedObjectContext] hasChanges]) {
-    return NSTerminateNow;
-  }
-
-  NSError *error = nil;
-  if (![[self managedObjectContext] save:&error]) {
-
-    // Customize this code block to include application-specific recovery steps.
-    BOOL result = [sender presentError:error];
-    if (result) {
-      return NSTerminateCancel;
-    }
-
-    NSString *question = NSLocalizedString(@"Could not save changes while quitting. Quit anyway?", @"Quit without saves error question message");
-    NSString *info = NSLocalizedString(@"Quitting now will lose any changes you have made since the last successful save", @"Quit without saves error question info");
-    NSString *quitButton = NSLocalizedString(@"Quit anyway", @"Quit anyway button title");
-    NSString *cancelButton = NSLocalizedString(@"Cancel", @"Cancel button title");
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:question];
-    [alert setInformativeText:info];
-    [alert addButtonWithTitle:quitButton];
-    [alert addButtonWithTitle:cancelButton];
-
-    NSInteger answer = [alert runModal];
-
-    if (answer == NSAlertAlternateReturn) {
-      return NSTerminateCancel;
-    }
-  }
-
-  return NSTerminateNow;
 }
 
 - (NSData *)dataFrom:(NSString *)pathOrURL {
@@ -236,6 +215,7 @@
     // we found a category
     if ([currentChildName isEqualToString:@"h3"]) {
       currentCategory = [MCLCategory forName:childText atTopLevel:YES];
+
 //      NSLog(@"Category '%@'", childText);
 
       globalCategoryCount++;
@@ -284,9 +264,11 @@
   NSLog(@"Total Categories: %i", globalCategoryCount);
   NSLog(@"Total Subcategories: %i", globalSubCategoryCount);
   NSLog(@"Total elements: %i", globalElementCount);
+
+  [self saveAction:nil];
+
   return nil;
 
 }
-
 
 @end

@@ -120,4 +120,8 @@ static NSRegularExpression *SKILL_REGEX = nil;
   return [currentChildName isEqualToString:@"h4"];
 }
 
+- (NSString *)typeAsString {
+  return @"skills";
+}
+
 @end

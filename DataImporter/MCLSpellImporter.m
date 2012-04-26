@@ -176,4 +176,8 @@ static NSRegularExpression *SPELL_REGEX = nil;
   }
 }
 
+- (NSString *)typeAsString {
+  return @"spells";
+}
+
 @end

@@ -8,7 +8,6 @@
 
 #import "MCLAppDelegate.h"
 #import "MCLSkillImporter.h"
-#import "MCLSpellImporter.h"
 
 @implementation MCLAppDelegate
 
@@ -16,11 +15,8 @@
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-  MCLSkillImporter *skillImporter = [[MCLSkillImporter alloc] init];
-  [skillImporter importFrom:@"/Users/claprun/Downloads/skills.html"];
-
-  MCLSpellImporter *spellImporter = [[MCLSpellImporter alloc] init];
-  [spellImporter importFrom:@"/Users/claprun/Downloads/spells.html"];
+  [MCLImporter import:SKILLS from:@"/Users/claprun/Downloads/skills.html" withVersion:SR4];
+  [MCLImporter import:SPELLS from:@"/Users/claprun/Downloads/spells.html" withVersion:SR4];
 
   /*NSDictionary *categories = [MCLCategory categories:YES];
   NSArray *const sortedKeys = [[categories allKeys] sortedArrayUsingSelector:@selector(compare:)];
