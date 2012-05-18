@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="info.metacosm.DataImporter" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="AttributeDAO" representedClassName="AttributeDAO" syncable="YES">
+<model name="" userDefinedModelVersionIdentifier="info.metacosm.DataImporter" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MCLAttribute" representedClassName="MCLAttribute" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="CategoryDAO" representedClassName="CategoryDAO" syncable="YES">
+    <entity name="MCLCategorized" representedClassName="MCLCategorized" parentEntity="MCLNamed" syncable="YES">
+        <relationship name="category" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MCLCategory" inverseName="items" inverseEntity="MCLCategory" syncable="YES"/>
+    </entity>
+    <entity name="MCLCategory" representedClassName="MCLCategory" parentEntity="MCLNamed" syncable="YES">
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NamedDAO" inverseName="category" inverseEntity="NamedDAO" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MCLCategorized" inverseName="category" inverseEntity="MCLCategorized" syncable="YES"/>
+        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MCLCategory" inverseName="subCategories" inverseEntity="MCLCategory" syncable="YES"/>
+        <relationship name="subCategories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MCLCategory" inverseName="parent" inverseEntity="MCLCategory" syncable="YES"/>
     </entity>
-    <entity name="NamedDAO" representedClassName="NamedDAO" isAbstract="YES" syncable="YES">
+    <entity name="MCLNamed" representedClassName="MCLNamed" isAbstract="YES" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="category" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryDAO" inverseName="items" inverseEntity="CategoryDAO" syncable="YES"/>
     </entity>
-    <entity name="SkillDAO" representedClassName="SkillDAO" parentEntity="NamedDAO" syncable="YES">
+    <entity name="MCLSkill" representedClassName="MCLSkill" parentEntity="MCLCategorized" syncable="YES">
         <attribute name="canDefault" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="attribute" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AttributeDAO" syncable="YES"/>
-        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SkillDAO" inverseName="specializations" inverseEntity="SkillDAO" syncable="YES"/>
-        <relationship name="specializations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkillDAO" inverseName="parent" inverseEntity="SkillDAO" syncable="YES"/>
+        <relationship name="attribute" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MCLAttribute" syncable="YES"/>
+        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MCLSkill" inverseName="specializations" inverseEntity="MCLSkill" syncable="YES"/>
+        <relationship name="specializations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MCLSkill" inverseName="parent" inverseEntity="MCLSkill" syncable="YES"/>
     </entity>
-    <entity name="SpellDAO" representedClassName="SpellDAO" parentEntity="NamedDAO" syncable="YES">
+    <entity name="MCLSpell" representedClassName="MCLSpell" parentEntity="MCLCategorized" syncable="YES">
         <attribute name="area" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="damage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="direct" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -29,10 +33,11 @@
         <attribute name="usingElementalEffects" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AttributeDAO" positionX="-2808" positionY="1152" width="128" height="60"/>
-        <element name="CategoryDAO" positionX="-2810" positionY="1005" width="128" height="75"/>
-        <element name="NamedDAO" positionX="-2477" positionY="960" width="128" height="75"/>
-        <element name="SkillDAO" positionX="-2601" positionY="1251" width="128" height="120"/>
-        <element name="SpellDAO" positionX="-2403" positionY="1152" width="128" height="165"/>
+        <element name="MCLAttribute" positionX="-2808" positionY="1152" width="128" height="60"/>
+        <element name="MCLCategorized" positionX="-2477" positionY="990" width="128" height="60"/>
+        <element name="MCLCategory" positionX="-2736" positionY="963" width="128" height="105"/>
+        <element name="MCLNamed" positionX="-2630" positionY="744" width="128" height="60"/>
+        <element name="MCLSkill" positionX="-2601" positionY="1251" width="128" height="120"/>
+        <element name="MCLSpell" positionX="-2403" positionY="1143" width="128" height="165"/>
     </elements>
 </model>

@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		9E7E039B15665B10009DCB20 /* Mogenerrator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 9E7E039E15665B10009DCB20 /* Build configuration list for PBXAggregateTarget "Mogenerrator" */;
+			buildPhases = (
+				9E7E03A015665B38009DCB20 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerrator;
+			productName = Mogenerrator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		6759C98F9B45448DE4CFF14E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF14D /* Cocoa.framework */; };
 		6759C98F9B45448DE4CFF158 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF157 /* InfoPlist.strings */; };
@@ -23,13 +37,21 @@
 		6759C98F9B45448DE4CFF18E /* MCLSpellImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF18D /* MCLSpellImporter.m */; };
 		6759C98F9B45448DE4CFF191 /* MCLSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF190 /* MCLSpell.m */; };
 		6759C98F9B45448DE4CFF195 /* MCLDetectionSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */; };
+		9EC92ED21549C15B000E6253 /* NamedDAO.m in Sources */ = {isa = PBXBuildFile; };
+		9EC92ED61549C15B000E6253 /* CategoryDAO.m in Sources */ = {isa = PBXBuildFile; };
+		9EC92ED91549C15B000E6253 /* SkillDAO.m in Sources */ = {isa = PBXBuildFile; };
+		9EC92EDC1549C15B000E6253 /* SpellDAO.m in Sources */ = {isa = PBXBuildFile; };
+		9EC92EDF1549C15B000E6253 /* CategorizedDAO.m in Sources */ = {isa = PBXBuildFile; };
+		9EC92EE21549C15B000E6253 /* AttributeDAO.m in Sources */ = {isa = PBXBuildFile; };
 		9EEA53F3153A08F90073BAA4 /* DataImporter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53F1153A08F90073BAA4 /* DataImporter.xcdatamodeld */; };
-		9EEA53F7153A18310073BAA4 /* SkillDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53F6153A18310073BAA4 /* SkillDAO.m */; };
-		9EEA53FA153A18310073BAA4 /* SpellDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53F9153A18310073BAA4 /* SpellDAO.m */; };
-		9EEA53FD153A18310073BAA4 /* CategoryDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53FC153A18310073BAA4 /* CategoryDAO.m */; };
-		9EEA5400153A18310073BAA4 /* NamedDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53FF153A18310073BAA4 /* NamedDAO.m */; };
-		9EEA5403153A18310073BAA4 /* AttributeDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5402153A18310073BAA4 /* AttributeDAO.m */; };
 		9EEA5404153A18810073BAA6 /* MCLImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAA5 /* MCLImporter.m */; };
+		9EEA5404153A18810073BAA9 /* CategoryDAO+CRUD.m in Sources */ = {isa = PBXBuildFile; };
+		9EEA5404153A18810073BAAC /* _MCLAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAAB /* _MCLAttribute.m */; };
+		9EEA5404153A18810073BAAF /* _MCLCategorized.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAAE /* _MCLCategorized.m */; };
+		9EEA5404153A18810073BAB2 /* _MCLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAB1 /* _MCLCategory.m */; };
+		9EEA5404153A18810073BAB5 /* _MCLNamed.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAB4 /* _MCLNamed.m */; };
+		9EEA5404153A18810073BAB8 /* _MCLSkill.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAB7 /* _MCLSkill.m */; };
+		9EEA5404153A18810073BABB /* _MCLSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BABA /* _MCLSpell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,19 +97,21 @@
 		6759C98F9B45448DE4CFF193 /* Named.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Named.h; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLDetectionSpell.m; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF196 /* MCLDetectionSpell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLDetectionSpell.h; sourceTree = "<group>"; };
-		9EEA53F2153A08F90073BAA4 /* DataImporter.xcdatamodel */ = {isa = PBXFileReference; path = DataImporter.xcdatamodel; sourceTree = "<group>"; };
-		9EEA53F5153A18300073BAA4 /* SkillDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkillDAO.h; path = persistence/SkillDAO.h; sourceTree = "<group>"; };
-		9EEA53F6153A18310073BAA4 /* SkillDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkillDAO.m; path = persistence/SkillDAO.m; sourceTree = "<group>"; };
-		9EEA53F8153A18310073BAA4 /* SpellDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpellDAO.h; path = persistence/SpellDAO.h; sourceTree = "<group>"; };
-		9EEA53F9153A18310073BAA4 /* SpellDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpellDAO.m; path = persistence/SpellDAO.m; sourceTree = "<group>"; };
-		9EEA53FB153A18310073BAA4 /* CategoryDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryDAO.h; path = persistence/CategoryDAO.h; sourceTree = "<group>"; };
-		9EEA53FC153A18310073BAA4 /* CategoryDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryDAO.m; path = persistence/CategoryDAO.m; sourceTree = "<group>"; };
-		9EEA53FE153A18310073BAA4 /* NamedDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NamedDAO.h; path = persistence/NamedDAO.h; sourceTree = "<group>"; };
-		9EEA53FF153A18310073BAA4 /* NamedDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NamedDAO.m; path = persistence/NamedDAO.m; sourceTree = "<group>"; };
-		9EEA5401153A18310073BAA4 /* AttributeDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributeDAO.h; path = persistence/AttributeDAO.h; sourceTree = "<group>"; };
-		9EEA5402153A18310073BAA4 /* AttributeDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributeDAO.m; path = persistence/AttributeDAO.m; sourceTree = "<group>"; };
+		9EEA53F2153A08F90073BAA4 /* DataImporter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataImporter.xcdatamodel; sourceTree = "<group>"; };
 		9EEA5404153A18810073BAA5 /* MCLImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLImporter.m; sourceTree = "<group>"; };
 		9EEA5404153A18810073BAA7 /* MCLImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLImporter.h; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAAA /* _MCLAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _MCLAttribute.h; path = persistence/_MCLAttribute.h; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAAB /* _MCLAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _MCLAttribute.m; path = persistence/_MCLAttribute.m; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAAD /* _MCLCategorized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _MCLCategorized.h; path = persistence/_MCLCategorized.h; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAAE /* _MCLCategorized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _MCLCategorized.m; path = persistence/_MCLCategorized.m; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAB0 /* _MCLCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _MCLCategory.h; path = persistence/_MCLCategory.h; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAB1 /* _MCLCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _MCLCategory.m; path = persistence/_MCLCategory.m; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAB3 /* _MCLNamed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _MCLNamed.h; path = persistence/_MCLNamed.h; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAB4 /* _MCLNamed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _MCLNamed.m; path = persistence/_MCLNamed.m; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAB6 /* _MCLSkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _MCLSkill.h; path = persistence/_MCLSkill.h; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAB7 /* _MCLSkill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _MCLSkill.m; path = persistence/_MCLSkill.m; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAB9 /* _MCLSpell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _MCLSpell.h; path = persistence/_MCLSpell.h; sourceTree = "<group>"; };
+		9EEA5404153A18810073BABA /* _MCLSpell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _MCLSpell.m; path = persistence/_MCLSpell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,17 +235,19 @@
 		9EEA5404153A18810073BAA4 /* persistence */ = {
 			isa = PBXGroup;
 			children = (
+				9EEA5404153A18810073BABA /* _MCLSpell.m */,
+				9EEA5404153A18810073BAB9 /* _MCLSpell.h */,
+				9EEA5404153A18810073BAB7 /* _MCLSkill.m */,
+				9EEA5404153A18810073BAB6 /* _MCLSkill.h */,
+				9EEA5404153A18810073BAB4 /* _MCLNamed.m */,
+				9EEA5404153A18810073BAB3 /* _MCLNamed.h */,
+				9EEA5404153A18810073BAB1 /* _MCLCategory.m */,
+				9EEA5404153A18810073BAB0 /* _MCLCategory.h */,
+				9EEA5404153A18810073BAAE /* _MCLCategorized.m */,
+				9EEA5404153A18810073BAAD /* _MCLCategorized.h */,
+				9EEA5404153A18810073BAAB /* _MCLAttribute.m */,
+				9EEA5404153A18810073BAAA /* _MCLAttribute.h */,
 				9EEA53F1153A08F90073BAA4 /* DataImporter.xcdatamodeld */,
-				9EEA5401153A18310073BAA4 /* AttributeDAO.h */,
-				9EEA5402153A18310073BAA4 /* AttributeDAO.m */,
-				9EEA53FE153A18310073BAA4 /* NamedDAO.h */,
-				9EEA53FF153A18310073BAA4 /* NamedDAO.m */,
-				9EEA53FB153A18310073BAA4 /* CategoryDAO.h */,
-				9EEA53FC153A18310073BAA4 /* CategoryDAO.m */,
-				9EEA53F8153A18310073BAA4 /* SpellDAO.h */,
-				9EEA53F9153A18310073BAA4 /* SpellDAO.m */,
-				9EEA53F5153A18300073BAA4 /* SkillDAO.h */,
-				9EEA53F6153A18310073BAA4 /* SkillDAO.m */,
 			);
 			name = persistence;
 			sourceTree = "<group>";
@@ -284,6 +310,7 @@
 			targets = (
 				6759C98F9B45448DE4CFF145 /* DataImporter */,
 				6759C98F9B45448DE4CFF166 /* DataImporterTests */,
+				9E7E039B15665B10009DCB20 /* Mogenerrator */,
 			);
 		};
 /* End PBXProject section */
@@ -323,6 +350,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		9E7E03A015665B38009DCB20 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd DataImporter\nmogenerator -m DataImporter.xcdatamodeld/DataImporter.xcdatamodel -o mopersistence";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -339,12 +379,20 @@
 				6759C98F9B45448DE4CFF191 /* MCLSpell.m in Sources */,
 				6759C98F9B45448DE4CFF195 /* MCLDetectionSpell.m in Sources */,
 				9EEA53F3153A08F90073BAA4 /* DataImporter.xcdatamodeld in Sources */,
-				9EEA53F7153A18310073BAA4 /* SkillDAO.m in Sources */,
-				9EEA53FA153A18310073BAA4 /* SpellDAO.m in Sources */,
-				9EEA53FD153A18310073BAA4 /* CategoryDAO.m in Sources */,
-				9EEA5400153A18310073BAA4 /* NamedDAO.m in Sources */,
-				9EEA5403153A18310073BAA4 /* AttributeDAO.m in Sources */,
 				9EEA5404153A18810073BAA6 /* MCLImporter.m in Sources */,
+				9EEA5404153A18810073BAA9 /* CategoryDAO+CRUD.m in Sources */,
+				9EC92ED21549C15B000E6253 /* NamedDAO.m in Sources */,
+				9EC92ED61549C15B000E6253 /* CategoryDAO.m in Sources */,
+				9EC92ED91549C15B000E6253 /* SkillDAO.m in Sources */,
+				9EC92EDC1549C15B000E6253 /* SpellDAO.m in Sources */,
+				9EC92EDF1549C15B000E6253 /* CategorizedDAO.m in Sources */,
+				9EC92EE21549C15B000E6253 /* AttributeDAO.m in Sources */,
+				9EEA5404153A18810073BAAC /* _MCLAttribute.m in Sources */,
+				9EEA5404153A18810073BAAF /* _MCLCategorized.m in Sources */,
+				9EEA5404153A18810073BAB2 /* _MCLCategory.m in Sources */,
+				9EEA5404153A18810073BAB5 /* _MCLNamed.m in Sources */,
+				9EEA5404153A18810073BAB8 /* _MCLSkill.m in Sources */,
+				9EEA5404153A18810073BABB /* _MCLSpell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +563,20 @@
 			};
 			name = Debug;
 		};
+		9E7E039C15665B10009DCB20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9E7E039D15665B10009DCB20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -541,6 +603,15 @@
 			buildConfigurations = (
 				6759C98F9B45448DE4CFF168 /* Release */,
 				6759C98F9B45448DE4CFF169 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E7E039E15665B10009DCB20 /* Build configuration list for PBXAggregateTarget "Mogenerrator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E7E039C15665B10009DCB20 /* Release */,
+				9E7E039D15665B10009DCB20 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
