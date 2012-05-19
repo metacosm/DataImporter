@@ -5,14 +5,14 @@
 #import "MCLCategorized.h"
 
 extern const struct MCLSpellAttributes {
-  NSString *area;
-  NSString *damage;
-  NSString *direct;
-  NSString *drain;
-  NSString *duration;
-  NSString *range;
-  NSString *type;
-  NSString *usingElementalEffects;
+  __unsafe_unretained NSString *area;
+  __unsafe_unretained NSString *damage;
+  __unsafe_unretained NSString *direct;
+  __unsafe_unretained NSString *drain;
+  __unsafe_unretained NSString *duration;
+  __unsafe_unretained NSString *range;
+  __unsafe_unretained NSString *type;
+  __unsafe_unretained NSString *usingElementalEffects;
 } MCLSpellAttributes;
 
 extern const struct MCLSpellRelationships {
@@ -37,7 +37,7 @@ extern const struct MCLSpellFetchedProperties {
 - (MCLSpellID *)objectID;
 
 
-@property(nonatomic, retain) NSNumber *area;
+@property(nonatomic, strong) NSNumber *area;
 
 
 @property BOOL areaValue;
@@ -51,7 +51,7 @@ extern const struct MCLSpellFetchedProperties {
 
 
 
-@property(nonatomic, retain) NSString *damage;
+@property(nonatomic, strong) NSString *damage;
 
 
 //- (BOOL)validateDamage:(id*)value_ error:(NSError**)error_;
@@ -59,7 +59,7 @@ extern const struct MCLSpellFetchedProperties {
 
 
 
-@property(nonatomic, retain) NSNumber *direct;
+@property(nonatomic, strong) NSNumber *direct;
 
 
 @property BOOL directValue;
@@ -73,7 +73,7 @@ extern const struct MCLSpellFetchedProperties {
 
 
 
-@property(nonatomic, retain) NSString *drain;
+@property(nonatomic, strong) NSString *drain;
 
 
 //- (BOOL)validateDrain:(id*)value_ error:(NSError**)error_;
@@ -81,7 +81,7 @@ extern const struct MCLSpellFetchedProperties {
 
 
 
-@property(nonatomic, retain) NSString *duration;
+@property(nonatomic, strong) NSString *duration;
 
 
 //- (BOOL)validateDuration:(id*)value_ error:(NSError**)error_;
@@ -89,7 +89,7 @@ extern const struct MCLSpellFetchedProperties {
 
 
 
-@property(nonatomic, retain) NSString *range;
+@property(nonatomic, strong) NSString *range;
 
 
 //- (BOOL)validateRange:(id*)value_ error:(NSError**)error_;
@@ -97,7 +97,7 @@ extern const struct MCLSpellFetchedProperties {
 
 
 
-@property(nonatomic, retain) NSString *type;
+@property(nonatomic, strong) NSString *type;
 
 
 //- (BOOL)validateType:(id*)value_ error:(NSError**)error_;
@@ -105,7 +105,7 @@ extern const struct MCLSpellFetchedProperties {
 
 
 
-@property(nonatomic, retain) NSNumber *usingElementalEffects;
+@property(nonatomic, strong) NSNumber *usingElementalEffects;
 
 
 @property BOOL usingElementalEffectsValue;

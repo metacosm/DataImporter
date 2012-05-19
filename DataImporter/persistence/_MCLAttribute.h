@@ -5,7 +5,7 @@
 
 
 extern const struct MCLAttributeAttributes {
-  NSString *name;
+  __unsafe_unretained NSString *name;
 } MCLAttributeAttributes;
 
 extern const struct MCLAttributeRelationships {
@@ -30,7 +30,7 @@ extern const struct MCLAttributeFetchedProperties {
 - (MCLAttributeID *)objectID;
 
 
-@property(nonatomic, retain) NSString *name;
+@property(nonatomic, strong) NSString *name;
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;

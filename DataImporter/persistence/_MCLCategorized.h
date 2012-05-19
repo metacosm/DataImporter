@@ -8,7 +8,7 @@ extern const struct MCLCategorizedAttributes {
 } MCLCategorizedAttributes;
 
 extern const struct MCLCategorizedRelationships {
-  NSString *category;
+  __unsafe_unretained NSString *category;
 } MCLCategorizedRelationships;
 
 extern const struct MCLCategorizedFetchedProperties {
@@ -32,7 +32,7 @@ extern const struct MCLCategorizedFetchedProperties {
 - (MCLCategorizedID *)objectID;
 
 
-@property(nonatomic, retain) MCLCategory *category;
+@property(nonatomic, strong) MCLCategory *category;
 
 //- (BOOL)validateCategory:(id*)value_ error:(NSError**)error_;
 

@@ -5,13 +5,13 @@
 #import "MCLNamed.h"
 
 extern const struct MCLCategoryAttributes {
-  NSString *details;
+  __unsafe_unretained NSString *details;
 } MCLCategoryAttributes;
 
 extern const struct MCLCategoryRelationships {
-  NSString *items;
-  NSString *parent;
-  NSString *subCategories;
+  __unsafe_unretained NSString *items;
+  __unsafe_unretained NSString *parent;
+  __unsafe_unretained NSString *subCategories;
 } MCLCategoryRelationships;
 
 extern const struct MCLCategoryFetchedProperties {
@@ -37,7 +37,7 @@ extern const struct MCLCategoryFetchedProperties {
 - (MCLCategoryID *)objectID;
 
 
-@property(nonatomic, retain) NSString *details;
+@property(nonatomic, strong) NSString *details;
 
 
 //- (BOOL)validateDetails:(id*)value_ error:(NSError**)error_;
@@ -46,19 +46,19 @@ extern const struct MCLCategoryFetchedProperties {
 
 
 
-@property(nonatomic, retain) NSSet *items;
+@property(nonatomic, strong) NSSet *items;
 
 - (NSMutableSet *)itemsSet;
 
 
-@property(nonatomic, retain) MCLCategory *parent;
+@property(nonatomic, strong) MCLCategory *parent;
 
 //- (BOOL)validateParent:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property(nonatomic, retain) NSSet *subCategories;
+@property(nonatomic, strong) NSSet *subCategories;
 
 - (NSMutableSet *)subCategoriesSet;
 

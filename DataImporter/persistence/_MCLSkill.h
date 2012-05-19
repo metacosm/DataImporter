@@ -5,14 +5,14 @@
 #import "MCLCategorized.h"
 
 extern const struct MCLSkillAttributes {
-  NSString *canDefault;
-  NSString *details;
+  __unsafe_unretained NSString *canDefault;
+  __unsafe_unretained NSString *details;
 } MCLSkillAttributes;
 
 extern const struct MCLSkillRelationships {
-  NSString *attribute;
-  NSString *parent;
-  NSString *specializations;
+  __unsafe_unretained NSString *attribute;
+  __unsafe_unretained NSString *parent;
+  __unsafe_unretained NSString *specializations;
 } MCLSkillRelationships;
 
 extern const struct MCLSkillFetchedProperties {
@@ -38,7 +38,7 @@ extern const struct MCLSkillFetchedProperties {
 - (MCLSkillID *)objectID;
 
 
-@property(nonatomic, retain) NSNumber *canDefault;
+@property(nonatomic, strong) NSNumber *canDefault;
 
 
 @property BOOL canDefaultValue;
@@ -52,7 +52,7 @@ extern const struct MCLSkillFetchedProperties {
 
 
 
-@property(nonatomic, retain) NSString *details;
+@property(nonatomic, strong) NSString *details;
 
 
 //- (BOOL)validateDetails:(id*)value_ error:(NSError**)error_;
@@ -61,21 +61,21 @@ extern const struct MCLSkillFetchedProperties {
 
 
 
-@property(nonatomic, retain) MCLAttribute *attribute;
+@property(nonatomic, strong) MCLAttribute *attribute;
 
 //- (BOOL)validateAttribute:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property(nonatomic, retain) MCLSkill *parent;
+@property(nonatomic, strong) MCLSkill *parent;
 
 //- (BOOL)validateParent:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property(nonatomic, retain) NSSet *specializations;
+@property(nonatomic, strong) NSSet *specializations;
 
 - (NSMutableSet *)specializationsSet;
 
