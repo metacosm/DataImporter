@@ -6,27 +6,19 @@
 
 
 #import <Foundation/Foundation.h>
+#import "_MCLCategory.h"
 
 @protocol Named;
+@class MCLCategorized;
 
 
-@interface MCLCategory : NSObject {
+@interface MCLCategory : _MCLCategory {
 }
-
-@property(readonly, copy) NSString *name;
-@property(readwrite, weak, nonatomic) MCLCategory *parent;
-@property(readonly, strong) NSDictionary *items;
-@property(readwrite, copy, nonatomic) NSString *details;
-
-- (id)initWithName:(NSString *)name;
-
 - (void)addSubCategory:(MCLCategory *)category;
 
-- (void)addItem:(id <Named>)item;
+- (void)addItem:(MCLCategorized *)item;
 
-+ (MCLCategory *)forName:(NSString *)string;
++ (NSArray *)categories:(BOOL)topLevelOnly;
 
-+ (MCLCategory *)forName:(NSString *)name atTopLevel:(BOOL)isTop;
-
-+ (NSDictionary *)categories:(BOOL)topLevelOnly;
++ (MCLCategory *)forName:(NSString *)string withParent:(MCLCategory *)category;
 @end

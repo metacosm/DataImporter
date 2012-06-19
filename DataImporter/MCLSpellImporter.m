@@ -30,8 +30,7 @@ static NSRegularExpression *SPELL_REGEX = nil;
 }
 
 - (MCLCategory *)subCategoryWithParent:(MCLCategory *)currentCategory named:(NSString *)subCategoryName counter:(int)subCategoryCounter {
-  MCLCategory *currentSubCategory = [MCLCategory forName:[currentCategory.name stringByAppendingFormat:@" %i", subCategoryCounter]];
-  currentSubCategory.parent = currentCategory;
+  MCLCategory *currentSubCategory = [MCLCategory forName:[currentCategory.name stringByAppendingFormat:@" %i", subCategoryCounter] withParent:currentCategory];
 
 //  NSLog(@"\tSub-category '%@'", currentSubCategory.name);
 

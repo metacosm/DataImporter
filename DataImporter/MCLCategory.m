@@ -6,59 +6,15 @@
 
 
 #import "MCLCategory.h"
-#import "Named.h"
+#import "InnerBandCore.h"
+#import "MCLCategorized.h"
 
-
-static NSMutableDictionary *categories = nil;
-static NSMutableDictionary *topLevelCategories = nil;
 
 @implementation MCLCategory {
-
-@private
-  NSString *_name;
-  __weak MCLCategory *_parent;
-  NSMutableDictionary *subCategories;
-  NSMutableDictionary *_items;
-  NSString *_details;
-}
-
-@synthesize name = _name;
-@synthesize parent = _parent;
-@synthesize items = _items;
-@synthesize details = _details;
-
-
-+ (void)initialize {
-  [super initialize];
-
-  if (!categories) {
-    categories = [NSMutableDictionary dictionaryWithCapacity:101];
-    topLevelCategories = [NSMutableDictionary dictionaryWithCapacity:7];
-  }
-}
-
-
-- (id)initWithName:(NSString *)name {
-  self = [super init];
-  if (self) {
-    _name = name;
-    subCategories = [NSMutableDictionary dictionaryWithCapacity:7];
-    _items = [NSMutableDictionary dictionaryWithCapacity:7];
-  }
-
-  return self;
-
-}
-
-
-- (void)setParent:(MCLCategory *)category {
-  _parent = category;
-  [_parent addSubCategory:self];
-
 }
 
 - (void)addSubCategory:(MCLCategory *)category {
-  [subCategories setObject:category forKey:category.name];
+  [self addSubCategoriesObject:category];
 
 }
 
@@ -70,14 +26,14 @@ static NSMutableDictionary *topLevelCategories = nil;
   NSMutableString *description = [NSMutableString stringWithCapacity:1024];
   [description appendString:self.name];
 
-  if (subCategories.count > 0) {
-    for (id key in [[subCategories allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
-      [description appendFormat:@"\n%@+ %@", indent, [[subCategories valueForKey:key] descriptionWithIndent:[indent stringByAppendingString:@"\t"]]];
+  if (self.subCategories.count > 0) {
+    for (id category in [[self.subCategories allObjects] sortedArrayUsingSelector:@selector(compare:)]) {
+      [description appendFormat:@"\n%@+ %@", indent, [category descriptionWithIndent:[indent stringByAppendingString:@"\t"]]];
     }
   }
 
   if (self.items.count > 0) {
-    for (id item in self.items.allValues) {
+    for (id item in self.items.allObjects) {
       [description appendFormat:@"\n%@- %@", indent, item];
     }
   }
@@ -90,37 +46,35 @@ static NSMutableDictionary *topLevelCategories = nil;
 }
 
 
-- (void)addItem:(id <Named>)item {
-  if (item) {
-    [_items setObject:item forKey:item.name];
-  }
+- (void)addItem:(MCLCategorized *)item {
+  [self addItemsObject:item];
 
 }
 
-+ (MCLCategory *)forName:(NSString *)name {
-  return [self forName:name atTopLevel:NO];
++ (MCLCategory *)forName:(NSString *)name withParent:(MCLCategory *)parent {
+  // first check if the category we want already exists
+  MCLCategory *category = [MCLCategory firstWithKey:@"name" value:name];
+  if (category) {
 
-}
-
-+ (MCLCategory *)forName:(NSString *)name atTopLevel:(BOOL)isTop {
-  NSDictionary *lookupSpot = isTop ? topLevelCategories : categories;
-
-  id category = [lookupSpot objectForKey:name];
-  if (!category) {
-    category = [[MCLCategory alloc] initWithName:name];
-    [categories setObject:category forKey:name];
-
-    if (isTop) {
-      [topLevelCategories setObject:category forKey:name];
+    if (![parent isEqual:category.parent]) {
+      [NSException raise:@"Invalid category hierarchy" format:@"%@ doesn't have %@ as parent!", name, parent];
     }
-
+    else {
+      return category;
+    }
   }
-  return category;
+  else {
+    category = [MCLCategory create];
+    category.name = name;
+    category.parent = parent;
+    [parent addSubCategory:category];
+  }
 
+  return category;
 }
 
-+ (NSDictionary *)categories:(BOOL)topLevelOnly {
-  return topLevelOnly ? topLevelCategories : categories;
++ (NSArray *)categories:(BOOL)topLevelOnly {
+  return topLevelOnly ? [MCLCategory allForPredicate:[NSPredicate predicateWithFormat:@"parent = nil"]] : [MCLCategory all];
 
 }
 @end

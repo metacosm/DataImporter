@@ -214,7 +214,7 @@
 
     // we found a category
     if ([currentChildName isEqualToString:@"h3"]) {
-      currentCategory = [MCLCategory forName:childText atTopLevel:YES];
+      currentCategory = [MCLCategory forName:childText withParent:nil];
 
 //      NSLog(@"Category '%@'", childText);
 

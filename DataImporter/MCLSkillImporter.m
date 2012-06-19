@@ -41,8 +41,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
     return nil;
   }
   else {
-    MCLCategory *subCategory = [MCLCategory forName:subCategoryName];
-    subCategory.parent = currentCategory;
+    MCLCategory *subCategory = [MCLCategory forName:subCategoryName withParent:currentCategory];
     return subCategory;
   }
 
