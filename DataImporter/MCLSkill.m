@@ -6,57 +6,56 @@
 
 
 #import "MCLSkill.h"
+#import "InnerBandCore.h"
+#import "_MCLAttribute.h"
+#import "MCLAttribute.h"
 #import "MCLCategory.h"
 
 
 @implementation MCLSkill {
 
-@private
-  NSString *_name;
-  NSString *_attribute;
-  NSString *_details;
-  BOOL _canDefault;
-  NSMutableArray *_specializations;
-  __weak MCLCategory *_category;
 }
-@synthesize name = _name;
-@synthesize attribute = _attribute;
-@synthesize details = _details;
-@synthesize canDefault = _canDefault;
-@synthesize specializations = _specializations;
-@synthesize category = _category;
 
-
-- (id)initWithName:(NSString *)name attribute:(NSString *)attribute {
-  self = [super init];
-  if (self) {
-    _name = name;
-    _attribute = attribute;
+- (BOOL)validateDetails:(id *)details error:(NSError **)error {
+  if (!*details || ((NSString *) *details).length == 0) {
+    return NO;
   }
 
-  return self;
-
-}
-
-- (void)setCategory:(MCLCategory *)category {
-  _category = category;
-  [category addItem:self];
-}
-
-- (void)setDetails:(NSString *)details {
-  if (!details || details.length == 0) {
-    NSLog(@"!!!!!!!! Missing details for skill %@", _name);
-  }
-  _details = [NSString stringWithString:details];
+  return YES;
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"Skill named '%@' linked to '%@' with defaulting %s.\nCategory: %@\nSpecializations: %@\nDetails:\n%@", _name, _attribute, _canDefault ? "Yes" : "No", _category.name, _specializations.description, _details];
+  return [NSString stringWithFormat:@"Skill named '%@' linked to '%@' with defaulting %s.\nCategory: %@\nSpecializations: %@\nDetails:\n%@", self.name, self.attribute, self.canDefaultValue ? "Yes" : "No", self.category.name, self.specializations.description, self.details];
 }
 
 
-+ (MCLSkill *)skillNamed:(NSString *)skillName linkedAttribute:(NSString *)attributeName {
-  return [[MCLSkill alloc] initWithName:skillName attribute:attributeName];
+- (void)addSpecialization:(NSString *)specializationName {
+  MCLSkill *const specialization = [MCLSkill skillNamed:specializationName linkedAttribute:self.attribute];
+  [self addSpecializationsObject:specialization];
+}
+
++ (MCLSkill *)skillNamed:(NSString *)skillName linkedAttributeNamed:(NSString *)attributeName {
+  return [MCLSkill skillNamed:skillName linkedAttribute:[MCLAttribute attributeNamed:attributeName]];
+}
+
++ (MCLSkill *)skillNamed:(NSString *)skillName linkedAttribute:(MCLAttribute *)attribute {
+  MCLSkill *skill = [MCLSkill firstWithKey:MCLNamedAttributes.name value:skillName];
+  if (skill) {
+    NSString *const existingAttribute = skill.attribute.name;
+    if (existingAttribute && ![existingAttribute isEqualToString:attribute.name]) {
+      [NSException raise:@"Invalid skill - attribute reference" format:@"Skill %@ isn't linked to %@ attribute but to %@ attribute", skillName, attribute.name, existingAttribute];
+    }
+
+    return skill;
+  }
+  else {
+    skill = [MCLSkill create];
+    skill.name = skillName;
+    skill.attribute = attribute;
+
+    return skill;
+
+  }
 }
 
 

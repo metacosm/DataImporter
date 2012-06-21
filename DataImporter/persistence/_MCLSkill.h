@@ -55,10 +55,7 @@ extern const struct MCLSkillFetchedProperties {
 @property(nonatomic, strong) NSString *details;
 
 
-//- (BOOL)validateDetails:(id*)value_ error:(NSError**)error_;
-
-
-
+- (BOOL)validateDetails:(id *)value_ error:(NSError **)error_;
 
 
 @property(nonatomic, strong) MCLAttribute *attribute;

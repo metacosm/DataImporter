@@ -55,7 +55,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
   if (match) {
     NSString *skillName = [[childText substringWithRange:[match rangeAtIndex:1]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *attributeName = [childText substringWithRange:[match rangeAtIndex:2]];
-    MCLSkill *skill = [MCLSkill skillNamed:skillName linkedAttribute:attributeName];
+    MCLSkill *skill = [MCLSkill skillNamed:skillName linkedAttributeNamed:attributeName];
     skill.category = currentSubCategory != nil ? currentSubCategory : currentCategory;
     return skill;
   }
@@ -82,7 +82,7 @@ static NSRegularExpression *SKILL_REGEX = nil;
     NSUInteger childCount = [child childCount];
     if (childCount == 2 || childCount == 3) {
       BOOL canDefault = !NSEqualRanges(NSMakeRange(NSNotFound, 0), [[[child childAtIndex:0] stringValue] rangeOfString:@"Yes" options:NSCaseInsensitiveSearch]);
-      currentSkill.canDefault = canDefault;
+      currentSkill.canDefaultValue = canDefault;
 
       // we need to remove Specializations and trim the strings
       NSString *concatenatedSpecs = [[child childAtIndex:1] stringValue];
@@ -104,7 +104,9 @@ static NSRegularExpression *SKILL_REGEX = nil;
                             withObject:[filtered.lastObject stringByAppendingString:[[child childAtIndex:2] stringValue]]];
       }
 
-      currentSkill.specializations = filtered;
+      for (NSString *specialization in filtered) {
+        [currentSkill addSpecialization:specialization];
+      }
 
     }
     else {

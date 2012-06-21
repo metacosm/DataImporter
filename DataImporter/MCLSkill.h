@@ -7,23 +7,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Named.h"
+#import "_MCLSkill.h"
 
 @class MCLCategory;
 
 
-@interface MCLSkill : NSObject <Named>
+@interface MCLSkill : _MCLSkill
 
-@property(readonly, copy) NSString *name;
-@property(readonly, copy) NSString *attribute;
-@property(readwrite, copy, nonatomic) NSString *details;
-@property(readwrite, weak, nonatomic) MCLCategory *category;
++ (MCLSkill *)skillNamed:(NSString *)skillName linkedAttributeNamed:(NSString *)attributeName;
 
-@property(nonatomic, assign) BOOL canDefault;
-
-@property(nonatomic, strong) NSMutableArray *specializations;
-
-- (id)initWithName:(NSString *)name attribute:(NSString *)attribute;
-
-
-+ (MCLSkill *)skillNamed:(NSString *)skillName linkedAttribute:(NSString *)attributeName;
+- (void)addSpecialization:(NSString *)specializationName;
 @end
