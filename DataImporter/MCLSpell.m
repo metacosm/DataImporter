@@ -8,43 +8,10 @@
 #import "MCLSpell.h"
 #import "MCLCategory.h"
 #import "MCLDetectionSpell.h"
+#import "InnerBandCore.h"
 
 
 @implementation MCLSpell {
-
-@private
-  NSString *_name;
-  NSString *_type;
-  NSString *_range;
-  NSString *_duration;
-  NSString *_drain;
-  NSString *_damage;
-  BOOL _direct;
-  BOOL _area;
-  BOOL _usingElementalEffects;
-  __weak MCLCategory *_category;
-}
-@synthesize name = _name;
-@synthesize type = _type;
-@synthesize range = _range;
-@synthesize duration = _duration;
-@synthesize drain = _drain;
-@synthesize direct = _direct;
-@synthesize area = _area;
-@synthesize usingElementalEffects = _usingElementalEffects;
-@synthesize category = _category;
-@synthesize damage = _damage;
-
-
-- (id)initWithName:(NSString *)name inCategory:(MCLCategory *)category {
-  self = [super init];
-  if (self) {
-    _name = name;
-    self.category = category;
-  }
-
-  return self;
-
 }
 
 - (NSString *)description {
@@ -53,19 +20,35 @@
 
 
 - (void)setCategory:(MCLCategory *)category {
-  _category = category;
+  [self willChangeValueForKey:MCLCategorizedRelationships.category];
+
+  [self setPrimitiveCategory:category];
   [category addItem:self];
+
+  [self didChangeValueForKey:MCLCategorizedRelationships.category];
 }
 
 + (MCLSpell *)spellNamed:(NSString *)name inCategory:(MCLCategory *)category {
 
-  MCLSpell *spell;
-  if ([category.name hasPrefix:@"Detection"]) {
-    spell = [MCLDetectionSpell alloc];
-  } else {
-    spell = [MCLSpell alloc];
-  }
-  return [spell initWithName:name inCategory:category];
+  MCLSpell *spell = [MCLSpell firstWithKey:MCLNamedAttributes.name value:name];
+  if (spell) {
+    if (category && ![spell.category isEqual:category]) {
+      [NSException raise:@"Invalid spell - category reference" format:@"Spell %@ isn't in %@ category but in %@ category", name, category.name, spell.category.name];
+    }
 
+    return spell;
+  }
+  else {
+    if ([category.name hasPrefix:@"Detection"]) {
+      spell = [MCLDetectionSpell create];
+    } else {
+      spell = [MCLSpell create];
+    }
+
+    spell.name = name;
+    spell.category = category;
+
+    return spell;
+  }
 }
 @end

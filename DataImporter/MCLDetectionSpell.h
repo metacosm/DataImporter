@@ -7,9 +7,8 @@
 
 #import <Foundation/Foundation.h>
 #import "MCLSpell.h"
+#import "_MCLDetectionSpell.h"
 
 
-@interface MCLDetectionSpell : MCLSpell
-@property(readwrite, nonatomic) BOOL active;
-@property(readwrite, nonatomic, copy) NSString *mode;
+@interface MCLDetectionSpell : _MCLDetectionSpell
 @end

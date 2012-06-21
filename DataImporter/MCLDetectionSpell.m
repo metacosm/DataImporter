@@ -10,12 +10,7 @@
 
 @implementation MCLDetectionSpell {
 
-@private
-  BOOL _active;
-  NSString *_mode;
 }
-@synthesize active = _active;
-@synthesize mode = _mode;
 
 - (NSString *)description {
   NSString *spellDesc = [super description];

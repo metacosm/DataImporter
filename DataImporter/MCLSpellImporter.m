@@ -67,9 +67,9 @@ static NSRegularExpression *SPELL_REGEX = nil;
     // details from spell name
     NSString *const spellDetails = [childText substringWithRange:[match rangeAtIndex:2]];
     if ([spellDetails rangeOfString:@"Elemental"].location != NSNotFound) {
-      currentSpell.usingElementalEffects = YES;
+      currentSpell.usingElementalEffectsValue = YES;
     }
-    currentSpell.direct = [spellDetails rangeOfString:@"Direct"].location != NSNotFound;
+    currentSpell.directValue = [spellDetails rangeOfString:@"Direct"].location != NSNotFound;
 
     // only for detection spells
     if ([currentSpell isMemberOfClass:[MCLDetectionSpell class]]) {
@@ -80,7 +80,7 @@ static NSRegularExpression *SPELL_REGEX = nil;
         detectionSpell.active = NO;
         detectionSpell.mode = @"Directional";
       } else {
-        detectionSpell.active = [spellDetails rangeOfString:@"Active"].location != NSNotFound;
+        detectionSpell.activeValue = [spellDetails rangeOfString:@"Active"].location != NSNotFound;
         const NSUInteger start = [spellDetails rangeOfString:@","].location + 1;
         const NSUInteger end = [spellDetails length] - start - 1;
         detectionSpell.mode = [spellDetails substringWithRange:NSMakeRange(start, end)];
@@ -133,7 +133,7 @@ static NSRegularExpression *SPELL_REGEX = nil;
           spell.type = [type stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
           spell.range = [range stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-          spell.area = [spell.range rangeOfString:@"(A)"].location != NSNotFound;
+          spell.areaValue = [spell.range rangeOfString:@"(A)"].location != NSNotFound;
 
 
           spell.duration = [duration stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];

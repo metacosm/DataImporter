@@ -12,6 +12,10 @@
         <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MCLCategory" inverseName="subCategories" inverseEntity="MCLCategory" syncable="YES"/>
         <relationship name="subCategories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MCLCategory" inverseName="parent" inverseEntity="MCLCategory" syncable="YES"/>
     </entity>
+    <entity name="MCLDetectionSpell" representedClassName="MCLDetectionSpell" parentEntity="MCLSpell" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="mode" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="MCLNamed" representedClassName="MCLNamed" isAbstract="YES" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -36,6 +40,7 @@
         <element name="MCLAttribute" positionX="-2808" positionY="1152" width="128" height="60"/>
         <element name="MCLCategorized" positionX="-2477" positionY="990" width="128" height="60"/>
         <element name="MCLCategory" positionX="-2736" positionY="963" width="128" height="105"/>
+        <element name="MCLDetectionSpell" positionX="-2403" positionY="1368" width="128" height="75"/>
         <element name="MCLNamed" positionX="-2630" positionY="744" width="128" height="60"/>
         <element name="MCLSkill" positionX="-2601" positionY="1251" width="128" height="120"/>
         <element name="MCLSpell" positionX="-2403" positionY="1143" width="128" height="165"/>

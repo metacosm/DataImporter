@@ -56,6 +56,7 @@
 		9EEA5404153A18810073BAC1 /* MCLNamed.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAC0 /* MCLNamed.m */; };
 		9EEA5404153A18810073BAC4 /* InnerBandCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAC3 /* InnerBandCore.m */; };
 		9EEA5404153A18810073BAC7 /* MCLAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAC6 /* MCLAttribute.m */; };
+		9EEA5404153A18810073BACA /* _MCLDetectionSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAC9 /* _MCLDetectionSpell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		9EEA5404153A18810073BAC3 /* InnerBandCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InnerBandCore.m; path = persistence/InnerBandCore.m; sourceTree = "<group>"; };
 		9EEA5404153A18810073BAC5 /* MCLAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLAttribute.h; sourceTree = "<group>"; };
 		9EEA5404153A18810073BAC6 /* MCLAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLAttribute.m; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAC8 /* _MCLDetectionSpell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _MCLDetectionSpell.h; path = persistence/_MCLDetectionSpell.h; sourceTree = "<group>"; };
+		9EEA5404153A18810073BAC9 /* _MCLDetectionSpell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _MCLDetectionSpell.m; path = persistence/_MCLDetectionSpell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +256,8 @@
 		9EEA5404153A18810073BAA4 /* persistence */ = {
 			isa = PBXGroup;
 			children = (
+				9EEA5404153A18810073BAC9 /* _MCLDetectionSpell.m */,
+				9EEA5404153A18810073BAC8 /* _MCLDetectionSpell.h */,
 				9EEA5404153A18810073BAC3 /* InnerBandCore.m */,
 				9EEA5404153A18810073BAC2 /* InnerBandCore.h */,
 				9EEA5404153A18810073BABA /* _MCLSpell.m */,
@@ -417,6 +422,7 @@
 				9EEA5404153A18810073BAC1 /* MCLNamed.m in Sources */,
 				9EEA5404153A18810073BAC4 /* InnerBandCore.m in Sources */,
 				9EEA5404153A18810073BAC7 /* MCLAttribute.m in Sources */,
+				9EEA5404153A18810073BACA /* _MCLDetectionSpell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
