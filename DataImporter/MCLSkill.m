@@ -25,7 +25,12 @@
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"Skill named '%@' linked to '%@' with defaulting %s.\nCategory: %@\nSpecializations: %@\nDetails:\n%@", self.name, self.attribute, self.canDefaultValue ? "Yes" : "No", self.category.name, self.specializations.description, self.details];
+  NSMutableString *specializationsNames = [[NSMutableString alloc] init];
+  for (MCLSkill *specialization in self.specializations) {
+    [specializationsNames appendFormat:@"  - %@\n", specialization.name];
+  }
+
+  return [NSString stringWithFormat:@"Skill named '%@' linked to '%@' with defaulting %s.\nCategory: %@\nSpecializations:\n%@Details:\n%@", self.name, self.attribute, self.canDefaultValue ? "Yes" : "No", self.category.name, specializationsNames, self.details];
 }
 
 

@@ -8,6 +8,7 @@
 
 #import "MCLAppDelegate.h"
 #import "MCLSkillImporter.h"
+#import "MCLCategory.h"
 
 @implementation MCLAppDelegate
 
@@ -18,12 +19,11 @@
   [MCLImporter import:SKILLS from:@"/Users/claprun/Downloads/skills.html" withVersion:SR4];
   [MCLImporter import:SPELLS from:@"/Users/claprun/Downloads/spells.html" withVersion:SR4];
 
-  /*NSDictionary *categories = [MCLCategory categories:YES];
-  NSArray *const sortedKeys = [[categories allKeys] sortedArrayUsingSelector:@selector(compare:)];
+  NSArray *const categories = [[MCLCategory categories:YES] sortedArrayUsingSelector:@selector(compare:)];
 
-  for (NSString *key in sortedKeys) {
-    NSLog(@"\n%@\n", [categories valueForKey:key]);
-  }*/
+  for (NSString *category in categories) {
+    NSLog(@"\n%@\n", category);
+  }
 
 }
 
