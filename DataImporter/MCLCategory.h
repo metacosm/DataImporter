@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "_MCLCategory.h"
 
-@protocol Named;
 @class MCLCategorized;
 
 
@@ -17,6 +16,8 @@
 - (void)addSubCategory:(MCLCategory *)category;
 
 - (void)addItem:(MCLCategorized *)item;
+
+- (NSComparisonResult)compare:(MCLCategory *)string;
 
 + (NSArray *)categories:(BOOL)topLevelOnly;
 

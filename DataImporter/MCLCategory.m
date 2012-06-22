@@ -73,6 +73,10 @@
   return category;
 }
 
+- (NSComparisonResult)compare:(MCLCategory *)category {
+  return [self.name compare:category.name];
+}
+
 + (NSArray *)categories:(BOOL)topLevelOnly {
   return topLevelOnly ? [MCLCategory allForPredicate:[NSPredicate predicateWithFormat:@"parent = nil"]] : [MCLCategory all];
 
