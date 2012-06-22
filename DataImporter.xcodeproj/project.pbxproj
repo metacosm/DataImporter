@@ -37,15 +37,15 @@
 		6759C98F9B45448DE4CFF18E /* MCLSpellImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF18D /* MCLSpellImporter.m */; };
 		6759C98F9B45448DE4CFF191 /* MCLSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF190 /* MCLSpell.m */; };
 		6759C98F9B45448DE4CFF195 /* MCLDetectionSpell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */; };
-		9EC92ED21549C15B000E6253 /* NamedDAO.m in Sources */ = {isa = PBXBuildFile; };
-		9EC92ED61549C15B000E6253 /* CategoryDAO.m in Sources */ = {isa = PBXBuildFile; };
-		9EC92ED91549C15B000E6253 /* SkillDAO.m in Sources */ = {isa = PBXBuildFile; };
-		9EC92EDC1549C15B000E6253 /* SpellDAO.m in Sources */ = {isa = PBXBuildFile; };
-		9EC92EDF1549C15B000E6253 /* CategorizedDAO.m in Sources */ = {isa = PBXBuildFile; };
-		9EC92EE21549C15B000E6253 /* AttributeDAO.m in Sources */ = {isa = PBXBuildFile; };
+		9EC92ED21549C15B000E6253 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9EC92ED61549C15B000E6253 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9EC92ED91549C15B000E6253 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9EC92EDC1549C15B000E6253 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9EC92EDF1549C15B000E6253 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9EC92EE21549C15B000E6253 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9EEA53F3153A08F90073BAA4 /* DataImporter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA53F1153A08F90073BAA4 /* DataImporter.xcdatamodeld */; };
 		9EEA5404153A18810073BAA6 /* MCLImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAA5 /* MCLImporter.m */; };
-		9EEA5404153A18810073BAA9 /* CategoryDAO+CRUD.m in Sources */ = {isa = PBXBuildFile; };
+		9EEA5404153A18810073BAA9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9EEA5404153A18810073BAAC /* _MCLAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAAB /* _MCLAttribute.m */; };
 		9EEA5404153A18810073BAAF /* _MCLCategorized.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAAE /* _MCLCategorized.m */; };
 		9EEA5404153A18810073BAB2 /* _MCLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEA5404153A18810073BAB1 /* _MCLCategory.m */; };
@@ -99,7 +99,6 @@
 		6759C98F9B45448DE4CFF18F /* MCLSpellImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLSpellImporter.h; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF190 /* MCLSpell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLSpell.m; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF192 /* MCLSpell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLSpell.h; sourceTree = "<group>"; };
-		6759C98F9B45448DE4CFF193 /* Named.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Named.h; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLDetectionSpell.m; sourceTree = "<group>"; };
 		6759C98F9B45448DE4CFF196 /* MCLDetectionSpell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLDetectionSpell.h; sourceTree = "<group>"; };
 		9EEA53F2153A08F90073BAA4 /* DataImporter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataImporter.xcdatamodel; sourceTree = "<group>"; };
@@ -203,7 +202,6 @@
 				9EEA5404153A18810073BAA4 /* persistence */,
 				6759C98F9B45448DE4CFF196 /* MCLDetectionSpell.h */,
 				6759C98F9B45448DE4CFF194 /* MCLDetectionSpell.m */,
-				6759C98F9B45448DE4CFF193 /* Named.h */,
 				6759C98F9B45448DE4CFF192 /* MCLSpell.h */,
 				6759C98F9B45448DE4CFF190 /* MCLSpell.m */,
 				6759C98F9B45448DE4CFF18F /* MCLSpellImporter.h */,
@@ -405,13 +403,13 @@
 				6759C98F9B45448DE4CFF195 /* MCLDetectionSpell.m in Sources */,
 				9EEA53F3153A08F90073BAA4 /* DataImporter.xcdatamodeld in Sources */,
 				9EEA5404153A18810073BAA6 /* MCLImporter.m in Sources */,
-				9EEA5404153A18810073BAA9 /* CategoryDAO+CRUD.m in Sources */,
-				9EC92ED21549C15B000E6253 /* NamedDAO.m in Sources */,
-				9EC92ED61549C15B000E6253 /* CategoryDAO.m in Sources */,
-				9EC92ED91549C15B000E6253 /* SkillDAO.m in Sources */,
-				9EC92EDC1549C15B000E6253 /* SpellDAO.m in Sources */,
-				9EC92EDF1549C15B000E6253 /* CategorizedDAO.m in Sources */,
-				9EC92EE21549C15B000E6253 /* AttributeDAO.m in Sources */,
+				9EEA5404153A18810073BAA9 /* (null) in Sources */,
+				9EC92ED21549C15B000E6253 /* (null) in Sources */,
+				9EC92ED61549C15B000E6253 /* (null) in Sources */,
+				9EC92ED91549C15B000E6253 /* (null) in Sources */,
+				9EC92EDC1549C15B000E6253 /* (null) in Sources */,
+				9EC92EDF1549C15B000E6253 /* (null) in Sources */,
+				9EC92EE21549C15B000E6253 /* (null) in Sources */,
 				9EEA5404153A18810073BAAC /* _MCLAttribute.m in Sources */,
 				9EEA5404153A18810073BAAF /* _MCLCategorized.m in Sources */,
 				9EEA5404153A18810073BAB2 /* _MCLCategory.m in Sources */,

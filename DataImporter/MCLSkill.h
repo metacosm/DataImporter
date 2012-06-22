@@ -6,7 +6,6 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Named.h"
 #import "_MCLSkill.h"
 
 @class MCLCategory;
